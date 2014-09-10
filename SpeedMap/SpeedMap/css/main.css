@@ -30,24 +30,18 @@ nav a {
 	text-decoration:none;
 	padding: 0 30px 0 30px;
 	line-height: 36px;
- background: -webkit-linear-gradient  background: -moz-linear-gradient ( #474747, #1e1e1e);
 	background: linear-gradient( #474747, #1e1e1e);
 	color: #999;
 }
 nav a:hover, nav a:active {
-	background: -moz-linear-gradient ( #39F, #1e1e1e);
 	background: linear-gradient( #39F, #1e1e1e);
 	color: white;
 }
 
 form {
 	width: 100%;
-	line-height: 2em;
-	background: black;
-	color: #999;
-	font-size: 10px;
 }
-form input[type=text] {
+form input[type=email] {
 	border-radius: 3px;
 	border: none;
 	padding-left: 10px;
@@ -59,7 +53,20 @@ form input[type=password] {
 	border: none;
 	padding-left: 10px;
 }
-form button {
+
+
+figure {
+	padding-top: 30px;
+	padding-bottom: 30px;
+	margin: 0;
+}
+.login {
+    line-height: 2em;
+	background: black;
+	color: #999;
+	font-size: 10px;
+}
+.login input[type=submit] {
 	/*background: #6C6;*/
 	background: linear-gradient( #6C6, #6C6);
 	border-radius: 5px;
@@ -68,17 +75,12 @@ form button {
 	margin-left: 1em;
 	margin-right: 1em;
 }
-form button:active, form button:hover {
+.login input[type=submit]:active, .login input[type=submit]:hover {
 	background: linear-gradient( #6C6, #004800);
-}
-figure {
-	padding-top: 30px;
-	padding-bottom: 30px;
-	margin: 0;
 }
 #registration {
 	text-decoration:none;
-	font-family: 'Noto serif', sans-serif;
+	font-family: 'Noto serif', serif;
 	font-size: 16px;
 	/*background: #09F;*/
 	background: linear-gradient( #09F, #B3E0FF);

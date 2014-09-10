@@ -1,0 +1,27 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="SpeedMap.Site1" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>Speed Map</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <link href="css/main.css" rel="stylesheet" />
+</head>
+<body>
+    <form id="form1" runat="server">
+        <nav>
+            <asp:LinkButton ID="lnkBtnHome" runat="server">Home</asp:LinkButton>
+            <asp:LinkButton ID="lnkBtnEntry" runat="server">Entry</asp:LinkButton>
+            <asp:LinkButton ID="lnkBtnMap" runat="server">Map</asp:LinkButton>
+            <asp:LinkButton ID="lnkBtnFeed" runat="server">Feed</asp:LinkButton>
+        </nav>
+       
+    
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+    </form>
+</body>
+</html>
