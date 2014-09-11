@@ -13,5 +13,6 @@
   <figure> <img src="images/speed-trap.jpg" width="525" height="200" alt="Speed Trap Pic"/> </figure>
   
   <a href="#Registration" id="registration">Register Here!</a>
-</section>
+</section>
+
 </asp:Content>
