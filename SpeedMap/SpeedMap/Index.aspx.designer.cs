@@ -13,22 +13,22 @@ namespace SpeedMap {
     public partial class Index {
         
         /// <summary>
-        /// txtBxEmail control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBxEmail;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
         
         /// <summary>
-        /// txtBxPassword control.
+        /// txtPassword control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBxPassword;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword;
         
         /// <summary>
         /// btnSignIn control.
@@ -40,12 +40,12 @@ namespace SpeedMap {
         protected global::System.Web.UI.WebControls.Button btnSignIn;
         
         /// <summary>
-        /// chkBxRemember control.
+        /// chkRemember control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox chkBxRemember;
+        protected global::System.Web.UI.WebControls.CheckBox chkRemember;
     }
 }

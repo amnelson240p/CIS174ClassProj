@@ -12,10 +12,10 @@
 <body>
     <form id="form1" runat="server">
         <nav>
-            <asp:LinkButton ID="lnkBtnHome" runat="server" OnClick="lnkBtnHome_Click">Home</asp:LinkButton>
-            <asp:LinkButton ID="lnkBtnEntry" runat="server" OnClick="lnkBtnEntry_Click">Entry</asp:LinkButton>
-            <asp:LinkButton ID="lnkBtnMap" runat="server" OnClick="lnkBtnMap_Click">Map</asp:LinkButton>
-            <asp:LinkButton ID="lnkBtnFeed" runat="server" OnClick="lnkBtnFeed_Click">Feed</asp:LinkButton>
+            <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click">Home</asp:LinkButton>
+            <asp:LinkButton ID="lbtnEntry" runat="server" OnClick="lbtnEntry_Click">Entry</asp:LinkButton>
+            <asp:LinkButton ID="lbtnMap" runat="server" OnClick="lbtnMap_Click">Map</asp:LinkButton>
+            <asp:LinkButton ID="lbtnFeed" runat="server" OnClick="lbtnFeed_Click">Feed</asp:LinkButton>
         </nav>
        
     

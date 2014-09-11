@@ -18,7 +18,7 @@ namespace SpeedMap
         {
             if (isloggedIn)
             {
-                // change the login bar to great user or have simple message
+                // change the login bar to greet user or some other simple message
             }
         }
     }
