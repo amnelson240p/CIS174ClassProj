@@ -30,7 +30,7 @@ nav a {
 	text-decoration:none;
 	padding: 0 30px 0 30px;
 	line-height: 36px;
- background: -webkit-linear-gradient  background: -moz-linear-gradient ( #474747, #1e1e1e);
+ background: -webkit-linear-gradient background: -moz-linear-gradient ( #474747, #1e1e1e);
 	background: linear-gradient( #474747, #1e1e1e);
 	color: #999;
 }
@@ -39,7 +39,6 @@ nav a:hover, nav a:active {
 	background: linear-gradient( #39F, #1e1e1e);
 	color: white;
 }
-
 form {
 	width: 100%;
 	line-height: 2em;
@@ -93,9 +92,71 @@ figure {
 	margin-left: auto;
 	margin-right: auto;
 }
-
-#registration:hover,
-#registration:active {
+#registration:hover, #registration:active {
 	color: #C562E6;
 	background: linear-gradient( #09F, #09F);
+}
+/* class for UL feed */
+.feed {
+	padding: 0;
+	list-style:none;
+	border: 1px solid #000;
+	border-radius: 10px;
+	background: linear-gradient( #474747, #1e1e1e);
+	color: white;
+}
+/* class for div for lower half of feed entry */
+.feedGroup {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left:auto;
+	margin-right:auto;
+	width: 70%;
+	border: 1px solid #000;
+	border-radius: 5px;
+	background: linear-gradient( #474747, #1e1e1e);
+	color: white;
+	overflow:hidden;
+}
+.feedGroup p {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+.feedGroup ul {
+	list-style:none;
+	padding: 0px;
+	margin-top: 0px;
+	margin-bottom: 0px;
+	
+}
+.feedLoc {
+	font-size:16px;
+	height: 2em;
+}
+.feedLoc a {
+	text-decoration:none;
+	color: white;
+}
+.feedDistance {
+	float:left;
+	width:60%;
+	display:block;
+	background: #E4E3C9;
+	/*background:#3F6;*/
+	color: black;
+	height: 2em;
+}
+.feedDuration {
+	float:left;
+	width: 40%;
+	/*background:#0C6;*/
+	background:#D0CF9D;
+	color: black;
+	display:block;
+	height: 2em;
+}
+.feedDistance p, .feedLoc p, .feedDuration p {
+	position: relative;
+	top: 50%;
+	transform: translateY(-50%);
 }
