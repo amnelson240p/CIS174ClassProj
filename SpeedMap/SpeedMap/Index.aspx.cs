@@ -20,6 +20,7 @@ namespace SpeedMap
             {
                 // change the login bar to greet user or some other simple message
             }
+           
         }
     }
 }

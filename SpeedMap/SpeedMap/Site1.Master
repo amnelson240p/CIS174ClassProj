@@ -8,20 +8,32 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="css/main.css" rel="stylesheet" />
+    <asp:ContentPlaceHolder ID="Stylesheets" runat="server">
+    </asp:ContentPlaceHolder>
+
 </head>
 <body>
     <form id="form1" runat="server">
         <nav>
-            <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click">Home</asp:LinkButton>
+             <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click">Home</asp:LinkButton>
             <asp:LinkButton ID="lbtnEntry" runat="server" OnClick="lbtnEntry_Click">Entry</asp:LinkButton>
             <asp:LinkButton ID="lbtnMap" runat="server" OnClick="lbtnMap_Click">Map</asp:LinkButton>
             <asp:LinkButton ID="lbtnFeed" runat="server" OnClick="lbtnFeed_Click">Feed</asp:LinkButton>
+            
         </nav>
-       
-    
+        <div class="login">
+            <asp:TextBox ID="txtEmail" runat="server" placeholder="Email" TextMode="Email"></asp:TextBox>
+            <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
+            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" />
+            <asp:CheckBox ID="chkRemember" runat="server" Checked="true" />Remember Me?
+        </div>
+
+
         <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
-        
         </asp:ContentPlaceHolder>
+
     </form>
+
+
 </body>
 </html>
