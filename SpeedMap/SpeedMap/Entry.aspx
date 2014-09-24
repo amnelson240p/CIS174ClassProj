@@ -71,9 +71,10 @@
             }
         }
         function updateMap(lat, lng) {
+            var image = 'images/SpeedTrapIcon.png';
             var mapOptions = { zoom: 15, center: new google.maps.LatLng(lat, lng) };
             map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-            marker = new google.maps.Marker({ map: map, position: mapOptions.center, draggable: true, title: "Spotted Trap" });
+            marker = new google.maps.Marker({ map: map, position: mapOptions.center, draggable: true, title: "Spotted Trap", icon: image });
 
         }
         function store_marker() {

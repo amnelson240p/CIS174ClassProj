@@ -65,6 +65,7 @@
     <Content Include="css\main.css" />
     <Content Include="Entry.aspx" />
     <Content Include="images\speed-trap.jpg" />
+    <Content Include="images\SpeedTrapIcon.png" />
     <Content Include="Index.aspx" />
     <Content Include="Map.aspx" />
     <Content Include="packages.config" />
