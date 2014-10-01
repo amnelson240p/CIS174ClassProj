@@ -53,6 +53,8 @@
             // store current location in session state
             sessionStorage.setItem("myLat", String(latitude));
             sessionStorage.setItem("myLng", String(longitude));
+            sessionStorage.setItem("trapTime", String(time.getMilliseconds));
+
 
             updateMap(latitude, longitude);
 

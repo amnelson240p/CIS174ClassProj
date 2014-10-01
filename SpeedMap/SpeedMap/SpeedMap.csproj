@@ -66,6 +66,7 @@
     <Content Include="Entry.aspx" />
     <Content Include="images\speed-trap.jpg" />
     <Content Include="images\SpeedTrapIcon.png" />
+    <Content Include="images\TrapMonitorpbg.gif" />
     <Content Include="Index.aspx" />
     <Content Include="Map.aspx" />
     <Content Include="packages.config" />
@@ -79,6 +80,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Code\TrapLocation.cs" />
     <Compile Include="Entry.aspx.cs">
       <DependentUpon>Entry.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -8,7 +8,7 @@
     <section>
         <h1>Not Registered?</h1>
         <figure>
-            <img src="images/speed-trap.jpg" width="525" height="200" alt="Speed Trap Pic" />
+            <img src="images/TrapMonitorpbg.gif" alt="Trap Monitor Logo" style="height: 412px; width: 664px" />
         </figure>
 
         <a href="#Registration" id="registration">Register Here!</a>
