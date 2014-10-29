@@ -8,8 +8,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
     <link href="css/main.css" rel="stylesheet" />
-    <asp:ContentPlaceHolder ID="Stylesheets" runat="server">
-    </asp:ContentPlaceHolder>
+    
 
 </head>
 <body>
@@ -29,7 +28,7 @@
         </div>
 
 
-        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        <asp:ContentPlaceHolder ID="formPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
 
     </form>

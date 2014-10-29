@@ -72,6 +72,7 @@
     <Content Include="packages.config" />
     <Content Include="Feed.aspx" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\EntryScript.js" />
     <Content Include="Scripts\geo-min.js" />
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
