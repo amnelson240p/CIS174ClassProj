@@ -46,8 +46,10 @@ function updateMap(lat, lng) {
 }
 function store_marker() {
     document.getElementById("testing").innerHTML = "Storing marker";
-    var mlat = marker.getPosition().lat().toFixed(4);
-    var mlong = marker.getPosition().lng().toFixed(4);
+    //var mlat = marker.getPosition().lat().toFixed(4);
+    //var mlong = marker.getPosition().lng().toFixed(4);
+    var mlat = marker.getPosition().lat();
+    var mlong = marker.getPosition().lng();
 
     // calculate distance here
     var distance = get_distance();
@@ -55,6 +57,13 @@ function store_marker() {
 
     document.getElementById("mlong").innerHTML = String(mlong);
     document.getElementById("mlat").innerHTML = String(mlat);
+
+    // testing form output
+    document.getElementById("formPlaceHolder_txtLongitude").value = String(mlong);
+    document.getElementById("formPlaceHolder_txtLatitude").value = String(mlat);
+
+    // testing postback
+    document.getElementById("formPlaceHolder_btnSubmit").click();
 }
 function get_distance() {
     var Rm = 3961;

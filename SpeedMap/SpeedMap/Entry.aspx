@@ -7,7 +7,12 @@
     <section>
         <h1>Location</h1>
         <p id="testing"></p>
-       
+        <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
+        <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
+        <br />
+        <asp:Label ID="lblReportTime" runat="server" Text="Report Time"></asp:Label>
+        <br />
+        <asp:Label ID="lblExpireTime" runat="server" Text="Expire Time"></asp:Label>
         <%-- <asp:Button ID="btnUpdate" runat="server" Text="Update" />--%>
         <div id="map-canvas"></div>
         <label for="mlong">Marker lng</label>
@@ -16,7 +21,8 @@
         <p id="mlat"></p>
         <p id="dist"></p>
         <%--<button type="button" onclick="lookup_location()">Update</button>--%>
-        <button type="button" onclick="store_marker()">Store</button>
+        <button type="button" onclick="store_marker()">Report Trap</button>
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"  />
     </section>
 
 
