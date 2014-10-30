@@ -12,6 +12,8 @@
         <br />
        
         <div id="map-canvas"></div>
+    
+        <img src="images/toggle_mobile.png" alt="toggle button" id="imgToggle" onclick="toggle()" class="btnToggle"/>
         <button type="button" onclick="store_marker()">Report Trap</button>
         <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"  />
     </section>
@@ -20,5 +22,27 @@
     <script src="Scripts/geo.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?"></script>
     <script src="Scripts/EntryScript.js"></script>
+    <script>
+        // start in fixed toggle state
+        var toggleState = 'm';
+
+        function toggle() {
+            var image = document.getElementById("imgToggle");
+            
+            if (toggleState == 'm') {
+                image.src = "images/toggle_fixed.png";
+                toggleState = 'f';
+                switchMarker(toggleState);
+                // need code to store toggle state for postback
+
+            } else {
+                image.src = "images/toggle_mobile.png";
+                toggleState = 'm';
+                switchMarker(toggleState);
+                // need code to store toggle state for postback
+
+            }
+        }
+    </script>
 </asp:Content>
 

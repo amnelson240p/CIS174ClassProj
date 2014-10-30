@@ -64,14 +64,18 @@
     <Content Include="css\entry.css" />
     <Content Include="css\main.css" />
     <Content Include="Entry.aspx" />
+    <Content Include="images\FixedTrapIcon.png" />
     <Content Include="images\speed-trap.jpg" />
     <Content Include="images\SpeedTrapIcon.png" />
+    <Content Include="images\toggle_fixed.png" />
+    <Content Include="images\toggle_mobile.png" />
     <Content Include="images\TrapMonitorpbg.gif" />
     <Content Include="Index.aspx" />
     <Content Include="Map.aspx" />
     <Content Include="packages.config" />
     <Content Include="Feed.aspx" />
     <Content Include="EntryConfirmation.aspx" />
+    <Content Include="GeoCodeTest.aspx" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\EntryScript.js" />
     <Content Include="Scripts\geo-min.js" />
@@ -125,6 +129,13 @@
     </Compile>
     <Compile Include="EntryConfirmation.aspx.designer.cs">
       <DependentUpon>EntryConfirmation.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="GeoCodeTest.aspx.cs">
+      <DependentUpon>GeoCodeTest.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="GeoCodeTest.aspx.designer.cs">
+      <DependentUpon>GeoCodeTest.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

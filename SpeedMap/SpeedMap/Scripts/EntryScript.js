@@ -4,23 +4,22 @@ var map;
 
 function lookup_location() {
     if (geo_position_js.init()) {
-        //document.getElementById("testing").innerHTML = "inside if";
         geo_position_js.getCurrentPosition(success_callback, error_callback, { enableHighAccuracy: true });
     }
     else {
-        //document.getElementById("testing").innerHTML = "location is unavailable";
+        alert("location is unavailable");
     }
 }
 
 function success_callback(position) {
     var latitude = position.coords.latitude.toFixed(4);
     var longitude = position.coords.longitude.toFixed(4);
-    var time = new Date(position.timestamp);
+   
 
     // store current location in session state
     sessionStorage.setItem("myLat", String(latitude));
     sessionStorage.setItem("myLng", String(longitude));
-    sessionStorage.setItem("trapTime", String(time.getMilliseconds));
+    
 
 
     updateMap(latitude, longitude);
@@ -31,10 +30,12 @@ function error_callback(err) {
     if (err.code == 1) {
         // user said no
         document.getElementById("testing").innerHTML = "User location denied";
+        alert("User location denied");
     }
     else if (err.code == 2) {
         // unavailable
         document.getElementById("testing").innerHTML = "User location unavailable";
+        alert("User location unavailable");
     }
 }
 function updateMap(lat, lng) {
@@ -45,17 +46,13 @@ function updateMap(lat, lng) {
 
 }
 function store_marker() {
-    document.getElementById("testing").innerHTML = "Storing marker";
-    //var mlat = marker.getPosition().lat().toFixed(4);
-    //var mlong = marker.getPosition().lng().toFixed(4);
+   
     var mlat = marker.getPosition().lat();
     var mlong = marker.getPosition().lng();
 
     // calculate distance here
     var distance = get_distance();
-    //document.getElementById("dist").innerHTML = String(distance);
-    //document.getElementById("mlong").innerHTML = String(mlong);
-    //document.getElementById("mlat").innerHTML = String(mlat);
+    
 
     // testing form output
     document.getElementById("formPlaceHolder_txtLongitude").value = String(mlong);
@@ -98,4 +95,18 @@ function deg2rad(deg) {
 // round to the nearest 1/1000
 function round(x) {
     return Math.round(x * 1000) / 1000;
+}
+
+function switchMarker(state) {
+    var image;
+    var mlat = marker.getPosition().lat();
+    var mlong = marker.getPosition().lng();
+    if (state == 'f') {
+        image = "images/FixedTrapIcon.png";
+        //document.getElementById("testing").innerHTML = "Fixed";
+    } else {
+        image = "images/SpeedTrapIcon.png";
+        //document.getElementById("testing").innerHTML = "mobile";
+    }
+    marker.setIcon(image);
 }

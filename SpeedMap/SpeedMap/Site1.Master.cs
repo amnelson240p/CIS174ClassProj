@@ -92,8 +92,8 @@ namespace SpeedMap
             activeNav = Nav_Names[2]; // "Map"
             Session["Navigation"] = 2;
 
-            Response.Redirect("Map.aspx");
-
+           // Response.Redirect("Map.aspx");
+            Response.Redirect("GeoCodeTest.aspx");
         }
 
         protected void lbtnFeed_Click(object sender, EventArgs e)

@@ -17,6 +17,9 @@
 	/*color: white;*/
 	overflow:hidden;
 }
+.btnToggle {
+    float: left;
+}
 
 p#testing {
     color: red;
