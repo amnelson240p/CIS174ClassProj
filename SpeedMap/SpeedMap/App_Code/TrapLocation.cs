@@ -8,7 +8,7 @@ namespace SpeedMap.App_Code
     public class TrapLocation
     {
         private DateTime startTime;
-        private double expireTime; // to be set 5 days after initial report
+        private long expireTime; // to be set 5 days after initial report
 
        
 
@@ -18,10 +18,10 @@ namespace SpeedMap.App_Code
         }
 
        // properties
-        public double reportTime { get; set;}
-        public float trapLatitude { get; set; }
-        public float trapLongitude { get; set; }
-        public double ExpireTime
+        public long reportTime { get; set;}
+        public double trapLatitude { get; set; }
+        public double trapLongitude { get; set; }
+        public long ExpireTime
         {
             get { return expireTime; }
         }
@@ -32,7 +32,8 @@ namespace SpeedMap.App_Code
             DateTime currentDate = DateTime.Now;
 
             // use elapsed time in seconds from start to current
-            reportTime = (currentDate - startTime).TotalSeconds;
+            //reportTime = (currentDate - startTime).TotalSeconds;
+            reportTime = Convert.ToInt64((currentDate - startTime).TotalSeconds);
 
             // 5 days = 432000 seconds
             // establish expireTime 5 days from reportTime

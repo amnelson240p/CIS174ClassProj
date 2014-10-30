@@ -71,6 +71,7 @@
     <Content Include="Map.aspx" />
     <Content Include="packages.config" />
     <Content Include="Feed.aspx" />
+    <Content Include="EntryConfirmation.aspx" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\EntryScript.js" />
     <Content Include="Scripts\geo-min.js" />
@@ -117,6 +118,13 @@
     </Compile>
     <Compile Include="Feed.aspx.designer.cs">
       <DependentUpon>Feed.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="EntryConfirmation.aspx.cs">
+      <DependentUpon>EntryConfirmation.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="EntryConfirmation.aspx.designer.cs">
+      <DependentUpon>EntryConfirmation.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>

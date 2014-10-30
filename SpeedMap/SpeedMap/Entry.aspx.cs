@@ -26,10 +26,18 @@ namespace SpeedMap
             trapLoc.trapLatitude = Convert.ToSingle(txtLatitude.Text);
             trapLoc.trapLongitude = Convert.ToSingle(txtLongitude.Text);
 
-            // testing class for database entry
-            // eventually will remove this code
-            lblReportTime.Text = trapLoc.reportTime.ToString();
-            lblExpireTime.Text = trapLoc.ExpireTime.ToString();
+            //store traplocation object is session
+            Session["ReportLocation"] = trapLoc;
+
+            
+            
+            // database entry here
+
+            // if everything is ok and stores in the database correctly
+            // redirect to confirmation
+            Response.Redirect("EntryConfirmation.aspx");
+
+            // If there were errors redirect to error page?
         }
     }
 }

@@ -4,6 +4,20 @@
     color: blueviolet;
 }
 
+.testGroup {
+	margin-top: 5px;
+	margin-bottom: 5px;
+	margin-left:auto;
+	margin-right:auto;
+    padding-left: 50px;
+	width: 45%;
+	border: 1px solid #000;
+	border-radius: 5px;
+	/*background: linear-gradient( #474747, #1e1e1e);*/
+	/*color: white;*/
+	overflow:hidden;
+}
+
 p#testing {
     color: red;
 }

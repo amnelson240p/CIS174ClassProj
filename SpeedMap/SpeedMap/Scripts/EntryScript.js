@@ -53,10 +53,9 @@ function store_marker() {
 
     // calculate distance here
     var distance = get_distance();
-    document.getElementById("dist").innerHTML = String(distance);
-
-    document.getElementById("mlong").innerHTML = String(mlong);
-    document.getElementById("mlat").innerHTML = String(mlat);
+    //document.getElementById("dist").innerHTML = String(distance);
+    //document.getElementById("mlong").innerHTML = String(mlong);
+    //document.getElementById("mlat").innerHTML = String(mlat);
 
     // testing form output
     document.getElementById("formPlaceHolder_txtLongitude").value = String(mlong);
