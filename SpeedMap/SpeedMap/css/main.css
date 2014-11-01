@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Noto+Serif);
 @charset "utf-8";
 /* CSS Document */
-header, section, footer, aside, nav, main, article, figure {
+header, section, aside, nav, main, article, figure {
     display: block;
 }
 
@@ -19,6 +19,15 @@ section {
     background: #E2E2E2;
     width: 100%;
     overflow: hidden;
+}
+
+footer {
+    position: fixed;
+    left: 0px;
+    bottom: 0px;
+    height: 100px;
+    width: 100%;
+    background: #999;
 }
 
 nav {

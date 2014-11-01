@@ -9,23 +9,54 @@ namespace SpeedMap.App_Code
     {
         private DateTime startTime;
         private long expireTime; // to be set 5 days after initial report
+        private char trapType; // flag for mobile or fixed (M or F)
+        private string trapCity;
+        private string trapStreet;
+        private string trapState;
+        private string username; // username who reported trap location
 
-       
-
-        public TrapLocation() {
-             // start measuring time from Jan 1, 2014
-        startTime = new DateTime(2014, 1, 1);
+        public TrapLocation()
+        {
+            // start measuring time from Jan 1, 2014
+            startTime = new DateTime(2014, 1, 1);
         }
 
-       // properties
-        public long reportTime { get; set;}
+        // properties
+        public long reportTime { get; set; }
         public double trapLatitude { get; set; }
         public double trapLongitude { get; set; }
         public long ExpireTime
         {
             get { return expireTime; }
         }
+        public char TrapType
+        {
+            get { return trapType; }
+            set { trapType = Char.ToUpper(value); }
+        }
+        public string TrapCity
+        {
+            get { return trapCity; }
+            set { trapCity = value; }
+        }
+        public string TrapStreet
+        {
+            get { return trapStreet; }
+            set { trapStreet = value; }
+        }
+        public string TrapState
+        {
+            get { return trapState; }
+            set { trapState = value; }
+        }
+        public string Username
+        {
+            get { return username; }
+            set { username = value; }
+        }
 
+
+        // special method to handle storing the report time
         public void recordReportTime()
         {
             // get server time

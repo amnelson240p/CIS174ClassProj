@@ -10,13 +10,16 @@
         <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
         <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
         <br />
-       
+
         <div id="map-canvas"></div>
-    
-        <img src="images/toggle_mobile.png" alt="toggle button" id="imgToggle" onclick="toggle()" class="btnToggle"/>
-        <button type="button" onclick="store_marker()">Report Trap</button>
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click"  />
+
+
     </section>
+    <footer>
+        <img src="images/toggle_mobile.png" alt="toggle button" id="imgToggle" onclick="toggle()" class="btnToggle" />
+        <button type="button" onclick="store_marker()">Report Trap</button>
+        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+    </footer>
 
 
     <script src="Scripts/geo.js"></script>
@@ -28,7 +31,7 @@
 
         function toggle() {
             var image = document.getElementById("imgToggle");
-            
+
             if (toggleState == 'm') {
                 image.src = "images/toggle_fixed.png";
                 toggleState = 'f';

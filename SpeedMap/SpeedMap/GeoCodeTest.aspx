@@ -47,12 +47,12 @@
                 }
             });
         }
-
+        // ************ MapQuest below here ***********************
         function showReverseURL() {
             //var latitude = document.getElementById('lat').value;
             //var longitude = document.getElementById('lng').value;
-            var latitude = 41.91550224; // hardcode test
-            var longitude = -93.61017248; // hardcode test
+            var latitude = 41.73129375; // hardcode test
+            var longitude = -93.57790014; // hardcode test
             //var reverseFormat = document.getElementById('reverseFormat').value;
             var reverseFormat = "kvp"; // hard code test
             safe = SAMPLE_POST_REVERSE;

@@ -16,10 +16,13 @@ namespace SpeedMap
             storedLoc = (TrapLocation)Session["ReportLocation"];
 
             // update labels with object properties
+            lblUsername.Text = storedLoc.Username.ToString();
             lblLongitude.Text = storedLoc.trapLongitude.ToString();
             lblLatitude.Text = storedLoc.trapLatitude.ToString();
             lblReportTime.Text = storedLoc.reportTime.ToString();
             lblExpireTime.Text = storedLoc.ExpireTime.ToString();
+
+            // test
         }
     }
 }

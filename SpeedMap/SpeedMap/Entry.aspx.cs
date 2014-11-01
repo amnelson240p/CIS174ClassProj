@@ -25,8 +25,10 @@ namespace SpeedMap
             // for now, use the textboxes to store longitude and latitude
             trapLoc.trapLatitude = Convert.ToSingle(txtLatitude.Text);
             trapLoc.trapLongitude = Convert.ToSingle(txtLongitude.Text);
+            // store username
+            trapLoc.Username = "testuser"; // hardcoded for testing
 
-            //store traplocation object is session
+            //store traplocation object in session for testing
             Session["ReportLocation"] = trapLoc;
 
             

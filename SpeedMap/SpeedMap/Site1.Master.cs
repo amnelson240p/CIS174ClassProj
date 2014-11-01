@@ -17,7 +17,8 @@ namespace SpeedMap
             // which nav is active
 
             int nav = -1;
-            if ((Session["Navigation"] != null)) {
+            if ((Session["Navigation"] != null))
+            {
                 nav = (int)(Session["Navigation"]);
             }
             switch (nav)
@@ -92,8 +93,8 @@ namespace SpeedMap
             activeNav = Nav_Names[2]; // "Map"
             Session["Navigation"] = 2;
 
-           // Response.Redirect("Map.aspx");
-            Response.Redirect("GeoCodeTest.aspx");
+            Response.Redirect("Map.aspx");
+            //Response.Redirect("GeoCodeTest.aspx");
         }
 
         protected void lbtnFeed_Click(object sender, EventArgs e)
