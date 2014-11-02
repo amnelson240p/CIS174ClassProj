@@ -1,5 +1,6 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site1.Master" AutoEventWireup="true" CodeBehind="EntryConfirmation.aspx.cs" Inherits="SpeedMap.WebForm2" %>
 
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link href="css/entry.css" rel="stylesheet" />
 </asp:Content>
@@ -29,21 +30,20 @@
     <h1>GeoCode Test</h1>
     <div class="testGroup">
         <label>Street</label>
-        <asp:Label ID="lblLocation1" runat="server" Text="location 1"></asp:Label>
+        <asp:Label ID="lblStreet" runat="server" Text="location 1"></asp:Label>
     </div>
     <div class="testGroup">
         <label>City</label>
-        <asp:Label ID="lblLocation2" runat="server" Text="location 2"></asp:Label>
+        <asp:Label ID="lblCity" runat="server" Text="location 2"></asp:Label>
     </div>
     <div class="testGroup">
         <label>State</label>
-        <asp:Label ID="lblLocation3" runat="server" Text="location 3"></asp:Label>
+        <asp:Label ID="lblState" runat="server" Text="location 3"></asp:Label>
     </div>
-    <div id="reverseNarrative"></div>
-
-
-    <script src="Scripts/revgeocode.js"></script>
-    <script>
-        window.onload = doReverse();
-    </script>
+    <div class="testGroup">
+        <label>Trap Type</label>
+        <asp:Label ID="lblTrapType" runat="server" Text="Type"></asp:Label>
+    </div>
+    <asp:Button ID="btnMaps" runat="server" Text="Take Me To Map" OnClick="btnMaps_Click" />
+    
 </asp:Content>

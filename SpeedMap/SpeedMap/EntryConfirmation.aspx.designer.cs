@@ -58,30 +58,48 @@ namespace SpeedMap {
         protected global::System.Web.UI.WebControls.Label lblExpireTime;
         
         /// <summary>
-        /// lblLocation1 control.
+        /// lblStreet control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation1;
+        protected global::System.Web.UI.WebControls.Label lblStreet;
         
         /// <summary>
-        /// lblLocation2 control.
+        /// lblCity control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation2;
+        protected global::System.Web.UI.WebControls.Label lblCity;
         
         /// <summary>
-        /// lblLocation3 control.
+        /// lblState control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblLocation3;
+        protected global::System.Web.UI.WebControls.Label lblState;
+        
+        /// <summary>
+        /// lblTrapType control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrapType;
+        
+        /// <summary>
+        /// btnMaps control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnMaps;
     }
 }

@@ -21,8 +21,23 @@ namespace SpeedMap
             lblLatitude.Text = storedLoc.trapLatitude.ToString();
             lblReportTime.Text = storedLoc.reportTime.ToString();
             lblExpireTime.Text = storedLoc.ExpireTime.ToString();
+            lblStreet.Text = storedLoc.TrapStreet.ToString();
+            lblCity.Text = storedLoc.TrapCity.ToString();
+            lblState.Text = storedLoc.TrapState.ToString();
+            lblTrapType.Text = storedLoc.TrapType.ToString();
 
-            // test
+            
+        }
+
+        protected void btnMaps_Click(object sender, EventArgs e)
+        {
+            
+            if ((Session["Navigation"] != null))
+            {
+               
+                Session["Navigation"] = 2;
+                Response.Redirect("Map.aspx");
+            }
         }
     }
 }

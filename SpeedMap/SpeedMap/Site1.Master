@@ -20,11 +20,16 @@
             <asp:LinkButton ID="lbtnFeed" runat="server" OnClick="lbtnFeed_Click">Feed</asp:LinkButton>
             
         </nav>
-        <div class="login">
+        <div class="login" id="loggedout" runat="server">
             <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" ></asp:TextBox>
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" />
+            <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" />
             <asp:CheckBox ID="chkRemember" runat="server" Checked="true" />Remember Me?
+        </div>
+        <div class="login" id="loggedin" runat="server">
+            <label class="welcome">Welcome, </label>
+            <asp:Label ID="lblUser" runat="server" Text="user" ></asp:Label>
+            <asp:Button ID="btnLogOut" runat="server" Text="Logout" />
         </div>
 
 

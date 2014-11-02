@@ -7,44 +7,41 @@
     <section>
         <h1>Location</h1>
         <p id="testing"></p>
-        <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
-        <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
-        <br />
-
+        
+        <asp:HiddenField ID="hfLongitude" runat="server" />
+        <asp:HiddenField ID="hfLatitude" runat="server" />
+        <asp:HiddenField ID="hfStreet" runat="server" />
+        <asp:HiddenField ID="hfCity" runat="server" />
+        <asp:HiddenField ID="hfState" runat="server" />
+        <asp:HiddenField ID="hfTrapType" runat="server" />
+        <asp:HiddenField ID="hfUsername" runat="server" />
         <div id="map-canvas"></div>
 
 
     </section>
     <footer>
         <img src="images/toggle_mobile.png" alt="toggle button" id="imgToggle" onclick="toggle()" class="btnToggle" />
-        <button type="button" onclick="store_marker()">Report Trap</button>
-        <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" />
+        <button type="button" onclick="sendReportData()" class="btnReport">Report Trap</button>
+        <div hidden="hidden">
+            <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btnReport" />
+        </div>
     </footer>
 
-
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
     <script src="Scripts/geo.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?"></script>
     <script src="Scripts/EntryScript.js"></script>
+    <script src="Scripts/revgeocode.js"></script>
     <script>
-        // start in fixed toggle state
-        var toggleState = 'm';
-
-        function toggle() {
-            var image = document.getElementById("imgToggle");
-
-            if (toggleState == 'm') {
-                image.src = "images/toggle_fixed.png";
-                toggleState = 'f';
-                switchMarker(toggleState);
-                // need code to store toggle state for postback
-
-            } else {
-                image.src = "images/toggle_mobile.png";
-                toggleState = 'm';
-                switchMarker(toggleState);
-                // need code to store toggle state for postback
-
-            }
+        var trapLat;
+        var trapLng;
+       
+        function sendReportData() {
+            store_marker();
+            trapLat = parseFloat(sessionStorage.getItem("trapLat"));
+            trapLng = parseFloat(sessionStorage.getItem("trapLng"));
+            // run geocode
+            doReverse(trapLng, trapLat);
         }
     </script>
 </asp:Content>

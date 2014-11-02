@@ -1,7 +1,7 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Noto+Serif);
 @charset "utf-8";
 /* CSS Document */
-header, section, aside, nav, main, article, figure {
+header, section, footer, aside, nav, main, article, figure {
     display: block;
 }
 
@@ -25,9 +25,11 @@ footer {
     position: fixed;
     left: 0px;
     bottom: 0px;
-    height: 100px;
+    height: 50px;
     width: 100%;
-    background: #999;
+    /*background: #999;*/
+    /*opacity: 0.4;*/
+    background-color: rgba(60, 60, 60, 0.4);
 }
 
 nav {
@@ -103,7 +105,14 @@ figure {
             background: linear-gradient( #6C6, #004800);
         }
 
+label.welcome {
+    margin-right: 5px;
+    color: white;
+}
 
+span#lblUser {
+    color: white;
+}
 
 #registration {
     text-decoration: none;

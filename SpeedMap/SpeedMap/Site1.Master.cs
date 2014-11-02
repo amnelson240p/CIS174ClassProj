@@ -1,4 +1,8 @@
-﻿using System;
+﻿// Site1.Master.cs
+// Updated 11/2/2014 for basic login navigation - Aaron Nelson
+// Structure - Aaron Nelson
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,15 +15,21 @@ namespace SpeedMap
     {
         private readonly string[] Nav_Names = { "Home", "Entry", "Map", "Feed" };
         private string activeNav; // initialzed to home navigation
+        private bool loginstatus; // flag for holding login status
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            // which nav is active
+            removeActiveStatus(); // clear navigation attributes for css
 
+            // which nav is active is stored in session
             int nav = -1;
             if ((Session["Navigation"] != null))
             {
                 nav = (int)(Session["Navigation"]);
+            }
+            else
+            {
+                nav = 0;
             }
             switch (nav)
             {
@@ -46,6 +56,37 @@ namespace SpeedMap
 
             }
 
+            // do stuff with login status
+            // first pull status from session if available
+            if (Session["loginStatus"] != null)
+            {
+                loginstatus = (bool)(Session["loginStatus"]);
+            }
+            else
+            {
+                loginstatus = false;
+            }
+            // update visible elements based on status
+            if (!loginstatus)
+            {
+                loggedin.Visible = false;
+            }
+            else
+            {
+                // we are logged in
+                loggedout.Visible = false;
+                loggedin.Visible = true;
+                // pull username from cookie if available
+                if (Request.Cookies["userInfo"] != null)
+                {
+                    lblUser.Text = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                }
+                else
+                {
+                    // no cookie with user info
+                    lblUser.Text = "noCookie";
+                }
+            }
 
         }
 
@@ -108,6 +149,31 @@ namespace SpeedMap
 
             Response.Redirect("Feed.aspx");
 
+        }
+
+        protected void btnSignIn_Click(object sender, EventArgs e)
+        {
+            // testing purposes need logic to verify and validate
+            string user = txtUsername.Text;
+            string pass = txtPassword.Text;
+            Response.Cookies["userInfo"]["userName"] = user;
+            Response.Cookies["userInfo"]["passWord"] = pass;
+            if (chkRemember.Checked)
+            {
+                Response.Cookies["userInfo"].Expires = DateTime.Now.AddYears(1);
+            }
+            else
+            {
+                Response.Cookies["userInfo"].Expires = DateTime.Now.AddHours(1);
+            }
+            
+            lblUser.Text = user;
+
+            loggedout.Visible = false;
+            loggedin.Visible = true;
+            loginstatus = true; // change status flag
+            // store status in session state
+            Session["loginStatus"] = loginstatus;
         }
 
     }

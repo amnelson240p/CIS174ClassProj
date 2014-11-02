@@ -19,6 +19,7 @@ namespace SpeedMap.App_Code
         {
             // start measuring time from Jan 1, 2014
             startTime = new DateTime(2014, 1, 1);
+            TrapType = 'M'; // default type
         }
 
         // properties
@@ -66,9 +67,18 @@ namespace SpeedMap.App_Code
             //reportTime = (currentDate - startTime).TotalSeconds;
             reportTime = Convert.ToInt64((currentDate - startTime).TotalSeconds);
 
-            // 5 days = 432000 seconds
-            // establish expireTime 5 days from reportTime
-            expireTime = reportTime + 432000;
+            if (TrapType.CompareTo('M') == 0)
+            {
+                // 5 days = 432000 seconds
+                // establish expireTime 5 days from reportTime
+                expireTime = reportTime + 432000;
+            }
+            else
+            {
+                // fixed trap
+                // one year in seconds = 31,536,000
+                expireTime = reportTime + (31536000*5); // 5 years
+            }
         }
     }
 }

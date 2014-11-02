@@ -5,6 +5,13 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <h1>GeoCode Test</h1>
+    <br />
+    <label for="txtLongitude" class="normal">Longitude</label>
+    <label for="txtLatitude" class="normal">Latitude</label>
+    <br />
+    <asp:TextBox ID="txtLongitude" runat="server"></asp:TextBox>
+    <asp:TextBox ID="txtLatitude" runat="server"></asp:TextBox>
+    <br />
     <div class="testGroup">
         <label>Street</label>
         <asp:Label ID="lblLocation1" runat="server" Text="location 1"></asp:Label>
@@ -31,7 +38,7 @@
         function initialize() {
             document.getElementById("formPlaceHolder_lblLocation2").innerHTML = "initialized";
             geocoder = new google.maps.Geocoder();
-            var latlng = new google.maps.LatLng(41.9770425, -93.57034704); 
+            var latlng = new google.maps.LatLng(41.9770425, -93.57034704);
 
             geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                 if (status == google.maps.GeocoderStatus.OK) {
@@ -49,11 +56,11 @@
         }
         // ************ MapQuest below here ***********************
         function showReverseURL() {
-            //var latitude = document.getElementById('lat').value;
-            //var longitude = document.getElementById('lng').value;
-            var latitude = 41.73129375; // hardcode test
-            var longitude = -93.57790014; // hardcode test
-            //var reverseFormat = document.getElementById('reverseFormat').value;
+            var latitude = document.getElementById("formPlaceHolder_txtLatitude").value;
+            var longitude = document.getElementById("formPlaceHolder_txtLongitude").value;
+            //var latitude = 41.73129375; // hardcode test
+            //var longitude = -93.57790014; // hardcode test
+            
             var reverseFormat = "kvp"; // hard code test
             safe = SAMPLE_POST_REVERSE;
             switch (reverseFormat) {
@@ -71,7 +78,7 @@
                     safe += '</location></reverse>';
                     break;
             }
-            
+
         };
 
         function doReverse() {
