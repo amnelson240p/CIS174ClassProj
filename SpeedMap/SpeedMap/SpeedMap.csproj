@@ -82,8 +82,8 @@
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\revgeocode.js" />
+    <Content Include="Scripts\TestWatch.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>

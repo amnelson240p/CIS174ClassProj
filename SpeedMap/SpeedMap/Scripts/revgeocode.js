@@ -25,17 +25,8 @@ function doReverse(lng, lat) {
 };
 
 
-function renderReverse(response) {
-    var html = '';
-    //alert("inside renderReverse");
-    html = "<p>Location: ";
+function renderReverse(response) {   
     var location = response.results[0].locations[0];
-    html += location.street + ", " + location.adminArea5 + ", " + location.adminArea4 + ", " + location.adminArea3 + ", " + location.adminArea1;
-    html += "</p>";
-    //alert(html);
-    
-    //document.getElementById("testing").innerHTML = html;
-    
 
     // store needed data in session
     sessionStorage.setItem("trapCity", location.adminArea5);
@@ -44,7 +35,8 @@ function renderReverse(response) {
 
     var trapLat = parseFloat(sessionStorage.getItem("trapLat"));
     var trapLng = parseFloat(sessionStorage.getItem("trapLng"));
-    var trapType = sessionStorage.getItem("toggleState");
+    //var trapType = sessionStorage.getItem("toggleState");
+    var trapType = document.getElementById("formPlaceHolder_hfTrapType").value;
     var userName = document.getElementById("formPlaceHolder_hfUsername").value;
     var request = {lat:trapLat, lng:trapLng, street:location.street, city:location.adminArea5, state:location.adminArea3, type:trapType, username:userName };
     var strRequest = JSON.stringify(request);

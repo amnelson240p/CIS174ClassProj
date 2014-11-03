@@ -1,4 +1,11 @@
-﻿using SpeedMap.App_Code;
+﻿// Entry.aspx.cs
+// 11/2/2014 - Aaron Nelson
+// This page allows users to toggle a marker icon to select trap type. They can drag the marker on the map to the trap location and submit (Report Trap). 
+// Prior to submission, street, city, and state are generated based of marker location (latitude and longitude). 
+// These data fields are passed to the server to be stored in the database.
+// login information is used to identify submission.
+
+using SpeedMap.App_Code;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,10 +34,12 @@ namespace SpeedMap
             else 
             {
                 // testing
-                hfUsername.Value = "UnknownUser"; // hard code username until login operations are functional
+                hfUsername.Value = "UnknownUser"; // hard code error user
 
-                // code needed here for error for not being logged in *****
-                //Response.Redirect("Index.aspx");
+                // Not logged in or no session(timeout?). Redirect to Index.aspx
+                Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
+                Response.Redirect("Index.aspx");
+
             }
             
         }

@@ -27,6 +27,7 @@ namespace SpeedMap
             lblTrapType.Text = storedLoc.TrapType.ToString();
 
             
+
         }
 
         protected void btnMaps_Click(object sender, EventArgs e)

@@ -34,23 +34,18 @@ namespace SpeedMap
             switch (nav)
             {
                 case 0:
-                    Console.WriteLine("Home nav");
                     lbtnHome.Attributes.Add("class", "isActive");
                     break;
                 case 1:
-                    Console.WriteLine("Entry nav");
                     lbtnEntry.Attributes.Add("class", "isActive");
                     break;
                 case 2:
-                    Console.WriteLine("Map nav");
                     lbtnMap.Attributes.Add("class", "isActive");
                     break;
                 case 3:
-                    Console.WriteLine("Feed nav");
                     lbtnFeed.Attributes.Add("class", "isActive");
                     break;
                 default:
-                    Console.WriteLine("Home nav");
                     lbtnHome.Attributes.Add("class", "isActive");
                     break;
 
@@ -135,7 +130,6 @@ namespace SpeedMap
             Session["Navigation"] = 2;
 
             Response.Redirect("Map.aspx");
-            //Response.Redirect("GeoCodeTest.aspx");
         }
 
         protected void lbtnFeed_Click(object sender, EventArgs e)
@@ -153,13 +147,24 @@ namespace SpeedMap
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            // testing purposes need logic to verify and validate
+            // validation? ****************** FIX *******************
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
+
+            // logic to verify correct username + password
+            // needs database access ******** NEED CODE HERE ***************
+
+
+            // verify fail
+            // code to message incorrect password combo (or page) ******* Fix ******
+            
+
+            // verify success
             Response.Cookies["userInfo"]["userName"] = user;
-            Response.Cookies["userInfo"]["passWord"] = pass;
+            //Response.Cookies["userInfo"]["passWord"] = pass;
             if (chkRemember.Checked)
             {
+                // persistent cookie
                 Response.Cookies["userInfo"].Expires = DateTime.Now.AddYears(1);
             }
             else

@@ -9,40 +9,40 @@
     <h2>The location has been recorded.</h2>
     <div class="testGroup">
         <label for="lblUsername">Username</label>
-        <asp:Label ID="lblUsername" runat="server" Text="username"></asp:Label>
+        <asp:Label ID="lblUsername" runat="server" Text="username" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label for="lblLongitude">Longitude</label>
-        <asp:Label ID="lblLongitude" runat="server" Text="Long"></asp:Label>
+        <asp:Label ID="lblLongitude" runat="server" Text="Long" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label for="lblLatitude">Latitude</label>
-        <asp:Label ID="lblLatitude" runat="server" Text="Lat"></asp:Label>
+        <asp:Label ID="lblLatitude" runat="server" Text="Lat" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label for="lblReportTime">Report Time</label>
-        <asp:Label ID="lblReportTime" runat="server" Text="rep"></asp:Label>
+        <asp:Label ID="lblReportTime" runat="server" Text="rep" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label for="lblExpireTime">Expire Time</label>
-        <asp:Label ID="lblExpireTime" runat="server" Text="exp"></asp:Label>
+        <asp:Label ID="lblExpireTime" runat="server" Text="exp" CssClass="reportData"></asp:Label>
     </div>
     <h1>GeoCode Test</h1>
     <div class="testGroup">
         <label>Street</label>
-        <asp:Label ID="lblStreet" runat="server" Text="location 1"></asp:Label>
+        <asp:Label ID="lblStreet" runat="server" Text="location 1" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label>City</label>
-        <asp:Label ID="lblCity" runat="server" Text="location 2"></asp:Label>
+        <asp:Label ID="lblCity" runat="server" Text="location 2" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label>State</label>
-        <asp:Label ID="lblState" runat="server" Text="location 3"></asp:Label>
+        <asp:Label ID="lblState" runat="server" Text="location 3" CssClass="reportData"></asp:Label>
     </div>
     <div class="testGroup">
         <label>Trap Type</label>
-        <asp:Label ID="lblTrapType" runat="server" Text="Type"></asp:Label>
+        <asp:Label ID="lblTrapType" runat="server" Text="Type" CssClass="reportData"></asp:Label>
     </div>
     <asp:Button ID="btnMaps" runat="server" Text="Take Me To Map" OnClick="btnMaps_Click" />
     

@@ -27,6 +27,14 @@
     /*color: white;*/
     overflow: hidden;
 }
+div.testGroup label {
+    text-align:left;
+    width: 80px;
+    margin-right: 100px;
+}
+.reportData {
+    float: left;
+}
 
 .btnToggle {
     float: left;
