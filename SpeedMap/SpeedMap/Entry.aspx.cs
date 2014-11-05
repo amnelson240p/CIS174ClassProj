@@ -83,15 +83,15 @@ namespace SpeedMap
             
             // fill in other fields
             trapLoc.Username = username;
-            trapLoc.trapLatitude = Convert.ToSingle(lat);
-            trapLoc.trapLongitude = Convert.ToSingle(lng);
+            trapLoc.TrapLatitude = Convert.ToSingle(lat);
+            trapLoc.TrapLongitude = Convert.ToSingle(lng);
             trapLoc.TrapStreet = street;
             trapLoc.TrapCity = city;
             trapLoc.TrapState = state;
-            trapLoc.TrapType = Convert.ToChar(type);
+            trapLoc.TrapType = type; // should be one character long string
             // immediately following storing type, record server time and store in object
             trapLoc.recordReportTime();
-
+            
             
 
             //store traplocation object in session for testing

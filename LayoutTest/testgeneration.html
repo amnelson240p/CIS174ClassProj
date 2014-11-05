@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+		<meta charset="UTF-8">
+		<title>Test Gen Javascript</title>
+		<!--[if lt IE 9]>
+			<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js">
+		</script>
+		<![endif]-->
+		<link href="css/main.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<h1>Javascript Generated HTML</h1>
+	<button type="button" onclick="throwData()">Throw</button>
+	<div id="jsOutput"></div>
+	<script type="text/javascript">
+		// hard coded stuff
+		var recordCount = 3;
+	
+		
+
+		function createUL() {
+			var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
+			var out = document.getElementById("jsOutput");
+
+			// start loop here
+			var x = 1;
+			var divEle = document.createElement("div");
+			divEle.className = "feedGroup";
+			out.appendChild(divEle);
+			//out.className = "feedGroup";
+			var listElement = document.createElement("ul");
+			// add to container
+			divEle.appendChild(listElement);
+			for (i = 0; i < classStr.length;i++) {
+				var pItem = document.createElement("p");
+				var listItem = document.createElement("li");
+			
+				pItem.id = classStr[i] + x;
+				listItem.appendChild(pItem);
+				listItem.className = classStr[i];
+				listElement.appendChild(listItem);
+
+			}
+		}
+
+		
+		function throwData() {
+			document.getElementById("feedLoc1").innerHTML = "Hickman, Urbandale";
+			document.getElementById("feedDistance1").innerHTML = "20 miles";
+			document.getElementById("feedType1").innerHTML = "Fixed";
+			document.getElementById("feedDuration1").innerHTML = "25 mins";
+		}
+
+		window.onload=function(){
+			createUL();
+		}
+
+	</script>
+</body>
+</html>

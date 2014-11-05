@@ -14,28 +14,33 @@ function showReverseURL(lng, lat) {
     safe += '&location=' + latitude + ',' + longitude; // key value pair
 };
 
-function doReverse(lng, lat) {
+function doReverse() {
+    var lat = document.getElementById("formPlaceHolder_hfLatitude").value;
+    var lng = document.getElementById("formPlaceHolder_hfLongitude").value;
     var script = document.createElement('script');
     script.type = 'text/javascript';
     showReverseURL(lng, lat);
     var newURL = safe.replace('APP_KEY', APP_KEY);
+    script.async = true;
     script.src = newURL;
-    
+        
     document.body.appendChild(script);
+    
+    //var first = document.getElementsByTagName('script')[0];
+    //first.parentNode.insertBefore(script, first);
+    
 };
 
 
 function renderReverse(response) {   
     var location = response.results[0].locations[0];
 
-    // store needed data in session
-    sessionStorage.setItem("trapCity", location.adminArea5);
-    sessionStorage.setItem("trapStreet", location.street);
-    sessionStorage.setItem("trapState", location.adminArea3);
+   
 
-    var trapLat = parseFloat(sessionStorage.getItem("trapLat"));
-    var trapLng = parseFloat(sessionStorage.getItem("trapLng"));
-    //var trapType = sessionStorage.getItem("toggleState");
+    //var trapLat = parseFloat(sessionStorage.getItem("trapLat"));
+    //var trapLng = parseFloat(sessionStorage.getItem("trapLng"));
+    var trapLat = document.getElementById("formPlaceHolder_hfLatitude").value;
+    var trapLng = document.getElementById("formPlaceHolder_hfLongitude").value;
     var trapType = document.getElementById("formPlaceHolder_hfTrapType").value;
     var userName = document.getElementById("formPlaceHolder_hfUsername").value;
     var request = {lat:trapLat, lng:trapLng, street:location.street, city:location.adminArea5, state:location.adminArea3, type:trapType, username:userName };
@@ -50,6 +55,8 @@ function renderReverse(response) {
         data:strRequest,
         dataType: "json",
         success: function (response) {
+            // finally send control back to the server through postback
+            document.getElementById("formPlaceHolder_btnSubmit").click();
         },
         
         failure: function (response) {
@@ -57,6 +64,5 @@ function renderReverse(response) {
         }
     });
 
-    // finally send control back to the server through postback
-    document.getElementById("formPlaceHolder_btnSubmit").click();
+    
 }

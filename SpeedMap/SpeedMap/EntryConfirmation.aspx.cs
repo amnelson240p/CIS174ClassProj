@@ -17,8 +17,8 @@ namespace SpeedMap
 
             // update labels with object properties
             lblUsername.Text = storedLoc.Username.ToString();
-            lblLongitude.Text = storedLoc.trapLongitude.ToString();
-            lblLatitude.Text = storedLoc.trapLatitude.ToString();
+            lblLongitude.Text = storedLoc.TrapLongitude.ToString();
+            lblLatitude.Text = storedLoc.TrapLatitude.ToString();
             lblReportTime.Text = storedLoc.reportTime.ToString();
             lblExpireTime.Text = storedLoc.ExpireTime.ToString();
             lblStreet.Text = storedLoc.TrapStreet.ToString();

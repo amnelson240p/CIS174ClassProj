@@ -137,9 +137,17 @@ figure {
 	text-decoration:none;
 	color: white;
 }
+.feedType {
+	float:left;
+	width: 20%;
+	display: block;
+/*	background:#D0CF9D;
+*/	color: red;
+	height: 2em;
+}
 .feedDistance {
 	float:left;
-	width:60%;
+	width:40%;
 	display:block;
 	background: #E4E3C9;
 	/*background:#3F6;*/
@@ -150,12 +158,12 @@ figure {
 	float:left;
 	width: 40%;
 	/*background:#0C6;*/
-	background:#D0CF9D;
+	background: #ABB586;
 	color: black;
 	display:block;
 	height: 2em;
 }
-.feedDistance p, .feedLoc p, .feedDuration p {
+.feedDistance p, .feedLoc p, .feedDuration p, .feedType p {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);

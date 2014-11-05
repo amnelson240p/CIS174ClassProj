@@ -61,19 +61,20 @@ function updateMap(lat, lng) {
 
 }
 function store_marker() {
-   
+    // grab position from marker
     var mlat = marker.getPosition().lat();
     var mlong = marker.getPosition().lng();
 
-    // store in session
-    sessionStorage.setItem("trapLat", mlat);
-    sessionStorage.setItem("trapLng", mlong); 
+    // store values in fields
+    document.getElementById("formPlaceHolder_hfLongitude").value = mlong;
+    document.getElementById("formPlaceHolder_hfLatitude").value = mlat;
+    doReverse();
 }
 
 
 function switchMarker(state) {
     var image;
-    
+
     if (state == 'F') {
         image = "images/FixedTrapIcon.png";
         //document.getElementById("testing").innerHTML = "Fixed";
