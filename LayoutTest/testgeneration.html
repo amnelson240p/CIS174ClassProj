@@ -11,23 +11,33 @@
 </head>
 <body>
 	<h1>Javascript Generated HTML</h1>
-	<button type="button" onclick="throwData()">Throw</button>
+	<button type="button" onclick="throwData(0)">Throw</button>
 	<div id="jsOutput"></div>
 	<script type="text/javascript">
+		var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
+		var lblStr = ["_rtime", "_lat", "_lng"];
 		// hard coded stuff
-		var recordCount = 3;
+		var recordCount = 3; // needed for loop
+		var trapData = '{"reportTime":"26527526","lat":"41.9770425","lng":"-93.57034704","street":"Interstate 35 N","city":"Ames","trapType":"F"}'
+		var trapObj = JSON.parse(trapData);
 	
 		
 
 		function createUL() {
-			var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
 			var out = document.getElementById("jsOutput");
 
 			// start loop here
-			var x = 1;
+			var x = 0;
 			var divEle = document.createElement("div");
 			divEle.className = "feedGroup";
+			divEle.id = "feed" + x;
 			out.appendChild(divEle);
+			for (j = 0; j<lblStr.length;j++) {	
+				var lblEle = document.createElement("label");
+				lblEle.id = "feed" + x + lblStr[j];
+				lblEle.style.display='none';
+				divEle.appendChild(lblEle);
+			}
 			//out.className = "feedGroup";
 			var listElement = document.createElement("ul");
 			// add to container
@@ -42,14 +52,31 @@
 				listElement.appendChild(listItem);
 
 			}
+			throwData(x);
 		}
 
 		
-		function throwData() {
-			document.getElementById("feedLoc1").innerHTML = "Hickman, Urbandale";
-			document.getElementById("feedDistance1").innerHTML = "20 miles";
-			document.getElementById("feedType1").innerHTML = "Fixed";
-			document.getElementById("feedDuration1").innerHTML = "25 mins";
+		function throwData(recIndex) {
+			// document.getElementById("feedLoc1").innerHTML = "Hickman, Urbandale";
+			// document.getElementById("feedDistance1").innerHTML = "20 miles";
+			// document.getElementById("feedType1").innerHTML = "Fixed";
+			// document.getElementById("feedDuration1").innerHTML = "25 mins";
+			
+			document.getElementById("feed" + recIndex + lblStr[0]).innerHTML = trapObj.reportTime;
+			document.getElementById("feed" + recIndex + lblStr[1]).innerHTML = trapObj.lat;
+			document.getElementById("feed" + recIndex + lblStr[2]).innerHTML = trapObj.lng;
+			var locStr = trapObj.street + ", " + trapObj.city;
+			document.getElementById(classStr[0] + recIndex).innerHTML = locStr;
+			document.getElementById(classStr[1] + recIndex).innerHTML = "calculated distance";
+			var trapTypeStr;
+			if ("M".localeCompare(trapObj.trapType) == 0) {
+				trapTypeStr = "Mobile";
+			} else {
+				trapTypeStr = "Fixed";
+			}
+			document.getElementById(classStr[2] + recIndex).innerHTML = trapTypeStr;
+			document.getElementById(classStr[3] + recIndex).innerHTML = "calculated elapsed time";
+
 		}
 
 		window.onload=function(){
