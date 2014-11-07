@@ -11,77 +11,159 @@
 </head>
 <body>
 	<h1>Javascript Generated HTML</h1>
-	<button type="button" onclick="throwData(0)">Throw</button>
 	<div id="jsOutput"></div>
+
+	<script src="trapReport.js"></script>
+	<script src="locationdistance.js"></script>
+	<script src="geo.js"></script>
 	<script type="text/javascript">
 		var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
 		var lblStr = ["_rtime", "_lat", "_lng"];
 		// hard coded stuff
 		var recordCount = 3; // needed for loop
 		var trapData = '{"reportTime":"26527526","lat":"41.9770425","lng":"-93.57034704","street":"Interstate 35 N","city":"Ames","trapType":"F"}'
+		var rData = getReport();
 		var trapObj = JSON.parse(trapData);
-	
-		
+		var count = rData.length;
+
+
 
 		function createUL() {
 			var out = document.getElementById("jsOutput");
 
 			// start loop here
-			var x = 0;
-			var divEle = document.createElement("div");
-			divEle.className = "feedGroup";
-			divEle.id = "feed" + x;
-			out.appendChild(divEle);
-			for (j = 0; j<lblStr.length;j++) {	
-				var lblEle = document.createElement("label");
-				lblEle.id = "feed" + x + lblStr[j];
-				lblEle.style.display='none';
-				divEle.appendChild(lblEle);
-			}
-			//out.className = "feedGroup";
-			var listElement = document.createElement("ul");
-			// add to container
-			divEle.appendChild(listElement);
-			for (i = 0; i < classStr.length;i++) {
-				var pItem = document.createElement("p");
-				var listItem = document.createElement("li");
-			
-				pItem.id = classStr[i] + x;
-				listItem.appendChild(pItem);
-				listItem.className = classStr[i];
-				listElement.appendChild(listItem);
+			//var x = 0;
+			for (x=0; x<rData.length;x++) {
+				var divEle = document.createElement("div");
+				divEle.className = "feedGroup";
+				divEle.id = "feed" + x;
+				out.appendChild(divEle);
+				for (j = 0; j<lblStr.length;j++) {
+					var lblEle = document.createElement("label");
+					lblEle.id = "feed" + x + lblStr[j];
+					lblEle.style.display='none';
+					divEle.appendChild(lblEle);
+				}
+				//out.className = "feedGroup";
+				var listElement = document.createElement("ul");
+				// add to container
+				divEle.appendChild(listElement);
+				for (i = 0; i < classStr.length;i++) {
+					var pItem = document.createElement("p");
+					var listItem = document.createElement("li");
 
+					pItem.id = classStr[i] + x;
+					listItem.appendChild(pItem);
+					listItem.className = classStr[i];
+					listElement.appendChild(listItem);
+
+				}
+				throwData(x);
 			}
-			throwData(x);
 		}
 
-		
+
+
 		function throwData(recIndex) {
-			// document.getElementById("feedLoc1").innerHTML = "Hickman, Urbandale";
-			// document.getElementById("feedDistance1").innerHTML = "20 miles";
-			// document.getElementById("feedType1").innerHTML = "Fixed";
-			// document.getElementById("feedDuration1").innerHTML = "25 mins";
-			
-			document.getElementById("feed" + recIndex + lblStr[0]).innerHTML = trapObj.reportTime;
-			document.getElementById("feed" + recIndex + lblStr[1]).innerHTML = trapObj.lat;
-			document.getElementById("feed" + recIndex + lblStr[2]).innerHTML = trapObj.lng;
-			var locStr = trapObj.street + ", " + trapObj.city;
+			document.getElementById("feed" + recIndex + lblStr[0]).innerHTML = rData[recIndex].reportTime;
+			document.getElementById("feed" + recIndex + lblStr[1]).innerHTML = rData[recIndex].lat;
+			document.getElementById("feed" + recIndex + lblStr[2]).innerHTML = rData[recIndex].lng;
+			var locStr = rData[recIndex].street + ", " + rData[recIndex].city;
 			document.getElementById(classStr[0] + recIndex).innerHTML = locStr;
-			document.getElementById(classStr[1] + recIndex).innerHTML = "calculated distance";
+			document.getElementById(classStr[1] + recIndex).innerHTML = "1234 mi";
 			var trapTypeStr;
-			if ("M".localeCompare(trapObj.trapType) == 0) {
+			var trapIcon;
+			if ("M".localeCompare(rData[recIndex].trapType) == 0) {
 				trapTypeStr = "Mobile";
+				trapIcon = "url(images/MobileSm.png)";
 			} else {
 				trapTypeStr = "Fixed";
+				trapIcon = "url(images/FixedSm.png)";
 			}
+			// stylize and initialize with browser compatible syntax
 			document.getElementById(classStr[2] + recIndex).innerHTML = trapTypeStr;
+			document.getElementById(classStr[2] + recIndex).style.backgroundImage = trapIcon;
+			document.getElementById(classStr[2] + recIndex).style.backgroundRepeat = "no-repeat";
+			document.getElementById(classStr[2] + recIndex).style.backgroundSize = "contain";
 			document.getElementById(classStr[3] + recIndex).innerHTML = "calculated elapsed time";
 
+		}
+		function updateTimes() {
+			var d = new Date();
+			var startDate = new Date("January 1, 2014"); // January 1, 2014
+			var nowTime = Math.abs(d-startDate);
+			// 1000 milliseconds to 1 sec
+			nowTime = Math.floor(nowTime/1000); // round to nearest integer
+
+			// calculate time for each feed entry
+			// need to put in loop time1, time2, etc.
+			var feedStr;
+			var timeStr;
+			for (i = 0; i < count; i++) {
+				feedStr = "feed" + i + "_rtime";
+				timeStr = classStr[3] + i;
+				var reportTime = document.getElementById(feedStr).innerHTML;
+				var elapsed = convertElapsed(reportTime, nowTime);
+				document.getElementById(timeStr).innerHTML = elapsed;
+
+			}
+
+		
+		}
+
+		function convertElapsed(old, current) {
+				var diff = current - old;
+				// one year is 31536000 seconds
+				var numyears = Math.floor(diff / 31536000);
+				var numdays = Math.floor((diff % 31536000) / 86400); 
+				var numhours = Math.floor(((diff % 31536000) % 86400) / 3600);
+				var numminutes = Math.floor((((diff % 31536000) % 86400) % 3600) / 60);
+				var numseconds = (((diff % 31536000) % 86400) % 3600) % 60;
+
+				var elapseStr = "";
+				if (numyears > 0) {
+					elapseStr += numyears + "y, ";
+				} 
+				if (numdays > 0) {
+					elapseStr += numdays + "d, ";
+				}
+				if (numhours > 0) {
+					elapseStr += numhours + "h, ";
+				}
+				if (numminutes > 0) {
+					elapseStr += numminutes + "m, ";
+				}
+				if (numseconds > 0) {
+					elapseStr += numseconds + "s ";
+				}
+				elapseStr += "ago."
+				
+				return elapseStr;
+		}
+
+		function updateDistance() {
+			var lng;
+			var lat;
+			var dist;
+
+			for (i = 0; i < count;i++) {
+				var rd = document.getElementById(classStr[1] + i);
+				lat = document.getElementById("feed" + i + lblStr[1]).innerHTML;
+				lng = document.getElementById("feed" + i + lblStr[2]).innerHTML;
+				dist = get_distance(lat, lng) + " mi";
+				rd.innerHTML = dist;
+			}
 		}
 
 		window.onload=function(){
 			createUL();
+			track_location();
 		}
+		window.setInterval(function(){
+			updateTimes();
+			updateDistance();
+		}, 60000);
+
 
 	</script>
 </body>

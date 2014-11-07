@@ -131,7 +131,7 @@ figure {
 }
 .feedLoc {
 	font-size:16px;
-	height: 2em;
+	height: 30px;
 }
 .feedLoc a {
 	text-decoration:none;
@@ -141,30 +141,50 @@ figure {
 	float:left;
 	width: 20%;
 	display: block;
-/*	background:#D0CF9D;
-*/	color: red;
-	height: 2em;
+	/*background: linear-gradient(#407630,#88C776);*/
+	background: linear-gradient(#979548,#D0CF9D);
+	color: #414ABE;
+	text-shadow:
+	1px 0px 1px #7A7A7A, 
+    2px 1px 1px #7A7A7A;
+    /*text-align: right;*/
+	height: 35px;
 }
 .feedDistance {
 	float:left;
 	width:40%;
 	display:block;
-	background: #E4E3C9;
-	/*background:#3F6;*/
-	color: black;
-	height: 2em;
+	/*background: linear-gradient(#C4BB15, #F0EA79);*/
+	background: linear-gradient(#979548,#D0CF9D);
+	/*color: #07981A;*/
+	color:black;
+	text-shadow:
+	1px 0px 1px #7A7A7A, 
+    2px 1px 1px #7A7A7A;
+	/*font-weight: bold;*/
+	font-size: 20px;
+	height: 35px;
 }
 .feedDuration {
 	float:left;
 	width: 40%;
 	/*background:#0C6;*/
-	background: #ABB586;
+	/*background: #ABB586;*/
+	/*background: linear-gradient(#778350,#ABB586);*/
+	background: linear-gradient(#979548,#D0CF9D);
 	color: black;
+	text-shadow:
+	1px 0px 1px #7A7A7A, 
+    2px 1px 1px #7A7A7A;
 	display:block;
-	height: 2em;
+	font-size: 10px;
+	font-style: italic;
+	height: 35px;
+
 }
 .feedDistance p, .feedLoc p, .feedDuration p, .feedType p {
 	position: relative;
 	top: 50%;
 	transform: translateY(-50%);
 }
+

@@ -1,4 +1,4 @@
-﻿var myLatitude;
+var myLatitude;
 var myLongitude;
 
 function track_location() {
@@ -8,7 +8,7 @@ function track_location() {
             timeout: 5000,
             maximumAge: 0
         };
-        navigator.geolocation.watchPosition(successCallback, error_callback, options);
+        navigator.geolocation.watchPosition(success_callback, error_callback, options);
     }
     else {
         alert("Geolocation not supported");
@@ -18,6 +18,8 @@ function track_location() {
 function success_callback(position) {
     myLatitude = position.coords.latitude;
     myLongitude = position.coords.longitude;
+    //var testStr = "lat: " + myLatitude + ", lng: " + myLongitude;
+    //alert(testStr);
 
     // if we are on feed page calculate distances
 
@@ -33,24 +35,9 @@ function error_callback(err) {
     alert("Error: " + errors[err.code]);
 }
 
-function testStuff() {
-    
-    // store current location in session state - for distance calculations *** test only
-    sessionStorage.setItem("myLat", String(latitude));
-    sessionStorage.setItem("myLng", String(longitude));
-
-    // calculate distance here ** test purpose only *****
-    var distance = get_distance();
-}
-
 
 function get_distance(lat, lng) {
     var Rm = 3961;
-    //var currentLng = parseFloat(sessionStorage.getItem("myLng"));
-    //var currentLat = parseFloat(sessionStorage.getItem("myLat"));
-   
-    //var mlat = marker.getPosition().lat().toFixed(4);
-    //var mlong = marker.getPosition().lng().toFixed(4);
     var lat1 = deg2rad(lat);
     var lat2 = deg2rad(myLatitude);
     var lon1 = deg2rad(lng);
@@ -80,3 +67,4 @@ function deg2rad(deg) {
 function round(x) {
     return Math.round(x * 1000) / 1000;
 }
+

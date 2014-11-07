@@ -8,6 +8,7 @@ namespace SpeedMap.App_Code
     public class TrapLocation
     {
         private DateTime startTime;
+        private long reportTime;
         private long expireTime; // to be set 5 days after initial report
         private string trapType; // flag for mobile or fixed (M or F)
         private string trapCity;
@@ -25,7 +26,10 @@ namespace SpeedMap.App_Code
         }
 
         // properties
-        public long reportTime { get; set; }
+        public long ReportTime {
+            get { return reportTime; }
+            set { reportTime = value; }
+        }
         public double TrapLatitude
         {
             get { return trapLatitude; }

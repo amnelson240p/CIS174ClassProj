@@ -19,7 +19,7 @@ namespace SpeedMap
             lblUsername.Text = storedLoc.Username.ToString();
             lblLongitude.Text = storedLoc.TrapLongitude.ToString();
             lblLatitude.Text = storedLoc.TrapLatitude.ToString();
-            lblReportTime.Text = storedLoc.reportTime.ToString();
+            lblReportTime.Text = storedLoc.ReportTime.ToString();
             lblExpireTime.Text = storedLoc.ExpireTime.ToString();
             lblStreet.Text = storedLoc.TrapStreet.ToString();
             lblCity.Text = storedLoc.TrapCity.ToString();
