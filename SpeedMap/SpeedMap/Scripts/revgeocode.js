@@ -34,16 +34,10 @@ function doReverse() {
 
 function renderReverse(response) {   
     var location = response.results[0].locations[0];
-
-   
-
-    //var trapLat = parseFloat(sessionStorage.getItem("trapLat"));
-    //var trapLng = parseFloat(sessionStorage.getItem("trapLng"));
     var trapLat = document.getElementById("formPlaceHolder_hfLatitude").value;
     var trapLng = document.getElementById("formPlaceHolder_hfLongitude").value;
     var trapType = document.getElementById("formPlaceHolder_hfTrapType").value;
-    var userName = document.getElementById("formPlaceHolder_hfUsername").value;
-    var request = {lat:trapLat, lng:trapLng, street:location.street, city:location.adminArea5, state:location.adminArea3, type:trapType, username:userName };
+    var request = {lat:trapLat, lng:trapLng, street:location.street, city:location.adminArea5, state:location.adminArea3, type:trapType };
     var strRequest = JSON.stringify(request);
     //alert(strRequest);
 

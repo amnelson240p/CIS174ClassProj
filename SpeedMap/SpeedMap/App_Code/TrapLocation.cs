@@ -14,7 +14,8 @@ namespace SpeedMap.App_Code
         private string trapCity;
         private string trapStreet;
         private string trapState;
-        private string username; // username who reported trap location
+        //private string username; // username who reported trap location
+        private int userId; // from database
         private double trapLatitude;
         private double trapLongitude;
 
@@ -61,11 +62,16 @@ namespace SpeedMap.App_Code
             get { return trapState; }
             set { trapState = value; }
         }
-        public string Username
+        public int UserId
         {
-            get { return username; }
-            set { username = value; }
+            get { return userId; }
+            set { userId = value; }
         }
+        //public string Username
+        //{
+        //    get { return username; }
+        //    set { username = value; }
+        //}
         public long ExpireTime
         {
             get { return expireTime; }
@@ -94,6 +100,16 @@ namespace SpeedMap.App_Code
                 // one year in seconds = 31,536,000
                 expireTime = reportTime + (31536000 * 5); // 5 years
             }
+        }
+        public bool storeUser()
+        {
+            if (HttpContext.Current.Session["userID"] != null)
+            {
+                userId = Convert.ToInt16(HttpContext.Current.Session["userID"]);
+                return true;
+            }
+            else
+                return false;
         }
     }
 }

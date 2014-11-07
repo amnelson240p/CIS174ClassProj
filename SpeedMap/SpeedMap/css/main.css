@@ -110,6 +110,32 @@ label.welcome {
     color: white;
 }
 
+.validator {
+    color: red;
+    margin-left: 1em;
+}
+
+.error {
+    color: red;
+    background: #E2E2E2;
+    overflow:hidden;
+}
+
+    .error ul {
+        width:15%;
+        margin-left:auto;
+        margin-right: auto;
+    }
+    .error li {
+        text-align: left;
+    }
+
+
+
+#ValidationSummary1 {
+    /*margin-top: 1em;*/
+}
+
 span#lblUser {
     color: white;
 }

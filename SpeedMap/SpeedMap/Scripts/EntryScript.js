@@ -44,12 +44,10 @@ function success_callback(position) {
 function error_callback(err) {
     if (err.code == 1) {
         // user said no
-        document.getElementById("testing").innerHTML = "User location denied";
         alert("User location denied");
     }
     else if (err.code == 2) {
         // unavailable
-        document.getElementById("testing").innerHTML = "User location unavailable";
         alert("User location unavailable");
     }
 }

@@ -6,7 +6,6 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <section>
         <h1>Location</h1>
-        <p id="testing"></p>
         
         <asp:HiddenField ID="hfLongitude" runat="server" />
         <asp:HiddenField ID="hfLatitude" runat="server" />
@@ -14,7 +13,6 @@
         <asp:HiddenField ID="hfCity" runat="server" />
         <asp:HiddenField ID="hfState" runat="server" />
         <asp:HiddenField ID="hfTrapType" runat="server" />
-        <asp:HiddenField ID="hfUsername" runat="server" />
   
         <div id="map-canvas"></div>
 

@@ -22,25 +22,26 @@ namespace SpeedMap
         {
             ScriptManager.RegisterStartupScript(this, GetType(), "Entry Map", "lookup_location()", true);
 
-            // pull username for data entry
+            // verify session and login status
             if (Session["loginStatus"] != null)
             {
-                // pull the user from cookie
-                if (Request.Cookies["userInfo"] != null)
+                // session but not logged in
+                if ((bool)Session["loginStatus"] == false)
                 {
-                    hfUsername.Value = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                    // Not logged in or no session(timeout?). Redirect to Index.aspx
+                    Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
+                    Response.Redirect("Index.aspx");
                 }
-            }
-            else 
-            {
-                // testing
-                hfUsername.Value = "UnknownUser"; // hard code error user
 
-                // Not logged in or no session(timeout?). Redirect to Index.aspx
+            }
+            // no session stored
+            else
+            {
+                // Redirect to Index.aspx
                 Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
                 Response.Redirect("Index.aspx");
-
             }
+            
             
         }
 
@@ -66,7 +67,7 @@ namespace SpeedMap
         
         
         [WebMethod]
-        public static void storeData(string lat, string lng, string street, string city, string state, string type, string username)
+        public static void storeData(string lat, string lng, string street, string city, string state, string type)
         {
             // Traplocation fields
             // Username
@@ -82,7 +83,7 @@ namespace SpeedMap
             
             
             // fill in other fields
-            trapLoc.Username = username;
+            //trapLoc.Username = username;
             trapLoc.TrapLatitude = Convert.ToSingle(lat);
             trapLoc.TrapLongitude = Convert.ToSingle(lng);
             trapLoc.TrapStreet = street;
@@ -91,14 +92,12 @@ namespace SpeedMap
             trapLoc.TrapType = type; // should be one character long string
             // immediately following storing type, record server time and store in object
             trapLoc.recordReportTime();
-            
-            
+            if (trapLoc.storeUser())
+            {
+                // userId exists. safe  to store TrapLocation object in session
+                HttpContext.Current.Session.Add("ReportLocation", trapLoc); // needed syntax for the static method (outside webform)
 
-            //store traplocation object in session for testing
-            //Session["ReportLocation"] = trapLoc;
-            HttpContext.Current.Session.Add("ReportLocation", trapLoc); // needed syntax for the static method (outside webform)
-
-            
+            }
             
         }
     }

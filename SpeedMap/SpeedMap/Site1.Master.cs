@@ -21,6 +21,15 @@ namespace SpeedMap
         {
             removeActiveStatus(); // clear navigation attributes for css
 
+            if (!IsPostBack)
+            {
+                // attempt to pull username from cookies
+                if (Request.Cookies["userInfo"] != null)
+                {
+                    txtUsername.Text = Request.Cookies["userInfo"]["userName"];
+                }
+            }
+
             // which nav is active is stored in session
             int nav = -1;
             if ((Session["Navigation"] != null))
@@ -74,7 +83,7 @@ namespace SpeedMap
                 // pull username from cookie if available
                 if (Request.Cookies["userInfo"] != null)
                 {
-                    lblUser.Text = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                    lblUser.Text = Request.Cookies["userInfo"]["userName"];
                 }
                 else
                 {
@@ -147,38 +156,83 @@ namespace SpeedMap
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
+            bool isValid = true; // hard code test for now need to fix <<<<<<<<<
             // validation? ****************** FIX *******************
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
+            int userId; // userId from database
 
             // logic to verify correct username + password
             // needs database access ******** NEED CODE HERE ***************
-
-
-            // verify fail
-            // code to message incorrect password combo (or page) ******* Fix ******
-            
-
-            // verify success
-            Response.Cookies["userInfo"]["userName"] = user;
-            //Response.Cookies["userInfo"]["passWord"] = pass;
-            if (chkRemember.Checked)
+            // does username and password match database?
+            if (!isValid)
             {
-                // persistent cookie
-                Response.Cookies["userInfo"].Expires = DateTime.Now.AddYears(1);
-            }
-            else
-            {
-                Response.Cookies["userInfo"].Expires = DateTime.Now.AddHours(1);
-            }
-            
-            lblUser.Text = user;
 
-            loggedout.Visible = false;
-            loggedin.Visible = true;
-            loginstatus = true; // change status flag
-            // store status in session state
+                // verify fail
+                loginstatus = false;
+                Session["loginStatus"] = loginstatus;
+                // code to message incorrect password combo (or page) ******* Fix ******
+
+
+            }
+            else // success
+            {
+                userId = 4; // hard coded test >>>>> REMOVE THIS LINE WHEN DATABASE IS WORKING <<<<<
+                // verify success
+
+
+
+                Response.Cookies["userInfo"]["userName"] = user;
+
+                if (chkRemember.Checked)
+                {
+                    // persistent cookie
+                    Response.Cookies["userInfo"].Expires = DateTime.Now.AddYears(1);
+                }
+                else
+                {
+                    Response.Cookies["userInfo"].Expires = DateTime.Now.AddHours(1);
+                }
+
+
+                // assign name to loggedin control
+                lblUser.Text = user;
+
+                // clear textboxes - may not be needed
+                txtUsername.Text = "";
+                txtPassword.Text = "";
+
+                loggedout.Visible = false;
+                loggedin.Visible = true;
+                loginstatus = true; // change status flag
+                // store activated login status in session state
+                Session["loginStatus"] = loginstatus;
+                // store userId
+                Session["userId"] = userId;
+            }
+        }
+
+        protected void btnLogOut_Click(object sender, EventArgs e)
+        {
+            // attempt to pull username from cookies
+            if (Request.Cookies["userInfo"] != null)
+            {
+                txtUsername.Text = Request.Cookies["userInfo"]["userName"];
+            }
+            // clear username from label in loggedin control
+            lblUser.Text = "";
+            // toggle visibility of login controls
+            loggedout.Visible = true;
+            loggedin.Visible = false;
+            loginstatus = false;
             Session["loginStatus"] = loginstatus;
+            // clear userID from session
+            Session.Remove("userId");
+
+            // Redirect to Index.aspx
+            Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
+            Response.Redirect("Index.aspx");
+
         }
 
     }

@@ -77,13 +77,14 @@
     <Content Include="EntryConfirmation.aspx" />
     <Content Include="GeoCodeTest.aspx" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\distance.js" />
     <Content Include="Scripts\EntryScript.js" />
     <Content Include="Scripts\geo-min.js" />
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\revgeocode.js" />
-    <Content Include="Scripts\TestWatch.js" />
+    <Content Include="Scripts\trackWatch.js" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -149,7 +150,9 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="AppData\" />
+  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

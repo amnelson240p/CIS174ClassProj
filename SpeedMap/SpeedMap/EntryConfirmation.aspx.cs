@@ -15,8 +15,23 @@ namespace SpeedMap
             TrapLocation storedLoc;
             storedLoc = (TrapLocation)Session["ReportLocation"];
 
+            // pull username for data entry
+            if (Session["loginStatus"] != null)
+            {
+                // pull the user from cookie
+                if (Request.Cookies["userInfo"] != null)
+                {
+                    lblUsername.Text = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                }
+            }
+            else
+            {
+                // testing
+                lblUsername.Text = "UnknownUser"; // hard code error user
+            }
+
             // update labels with object properties
-            lblUsername.Text = storedLoc.Username.ToString();
+            //lblUsername.Text = storedLoc.Username.ToString();
             lblLongitude.Text = storedLoc.TrapLongitude.ToString();
             lblLatitude.Text = storedLoc.TrapLatitude.ToString();
             lblReportTime.Text = storedLoc.ReportTime.ToString();
