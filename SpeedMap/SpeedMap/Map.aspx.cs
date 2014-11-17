@@ -11,7 +11,25 @@ namespace SpeedMap
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            // verify session and login status
+            if (Session["loginStatus"] != null)
+            {
+                // session but not logged in
+                if ((bool)Session["loginStatus"] == false)
+                {
+                    // Not logged in or no session(timeout?). Redirect to Index.aspx
+                    Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
+                    Response.Redirect("Index.aspx");
+                }
 
+            }
+            // no session stored
+            else
+            {
+                // Redirect to Index.aspx
+                Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
+                Response.Redirect("Index.aspx");
+            }
         }
     }
 }

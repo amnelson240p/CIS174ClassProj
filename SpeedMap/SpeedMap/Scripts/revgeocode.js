@@ -34,29 +34,24 @@ function doReverse() {
 
 function renderReverse(response) {   
     var location = response.results[0].locations[0];
-    var trapLat = document.getElementById("formPlaceHolder_hfLatitude").value;
-    var trapLng = document.getElementById("formPlaceHolder_hfLongitude").value;
-    var trapType = document.getElementById("formPlaceHolder_hfTrapType").value;
-    var request = {lat:trapLat, lng:trapLng, street:location.street, city:location.adminArea5, state:location.adminArea3, type:trapType };
-    var strRequest = JSON.stringify(request);
+    var trapLoc = {};
+    trapLoc.Latitude = parseFloat(document.getElementById("formPlaceHolder_hfLatitude").value);
+    trapLoc.Longitude = parseFloat(document.getElementById("formPlaceHolder_hfLongitude").value);
+    trapLoc.TrapType = document.getElementById("formPlaceHolder_hfTrapType").value;
+    trapLoc.Street = location.street;
+    trapLoc.City = location.adminArea5;
+    trapLoc.State = location.adminArea3;
+    trapLoc.User_Id = -1; // junk value
+    trapLoc.ReportTime = 0; // junk value
+    trapLoc.ExpireTime = 0; // junk value
+    var request = {Latitude:trapLoc.trapLat, Longitude:trapLoc.Longitude, Street:location.street,
+     City:location.adminArea5, State:location.adminArea3, TrapType:trapLoc.trapType,
+     User_Id:trapLoc.User_Id, ReportTime:trapLoc.ReportTime, ExpireTime:trapLoc.expiretime };
+    var strRequest = JSON.stringify(trapLoc);
     //alert(strRequest);
 
     // send report data to server through calling storeData code-behind method and passing client-side values
-    $.ajax({
-        type: "POST",
-        url: "Entry.aspx/storeData",
-        contentType: "application/json; charset=utf-8",
-        data:strRequest,
-        dataType: "json",
-        success: function (response) {
-            // finally send control back to the server through postback
-            document.getElementById("formPlaceHolder_btnSubmit").click();
-        },
-        
-        failure: function (response) {
-            alert(response.d);
-        }
-    });
+    sendMyReport(strRequest); // reportcom.js
 
     
 }

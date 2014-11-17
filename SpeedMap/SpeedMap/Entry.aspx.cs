@@ -41,64 +41,58 @@ namespace SpeedMap
                 Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
                 Response.Redirect("Index.aspx");
             }
-            
-            
+
+
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-                     
-            
-            
+
+
+
             if (Session["ReportLocation"] != null)
             {
                 // database entry here
 
                 // if everything is ok and stores in the database correctly
-                
+
                 // ok we are good to go. redirect to confirmation
                 Response.Redirect("EntryConfirmation.aspx");
             }
-            
+
 
             // If there were errors redirect to error page?
         }
 
-        
-        
+
+
         [WebMethod]
-        public static void storeData(string lat, string lng, string street, string city, string state, string type)
+        public static void storeData(TrapLocation trapLoc)
         {
+            //public static void storeData(string Latitude, string Longitude, string Street, string City, string State, string TrapType, string User_Id, string ReportTime, string ExpireTime)
             // Traplocation fields
-            // Username
-            // longitude
-            // latitude
+            // Latitude
+            // Longitude
             // Street
             // City
             // State
             // Trap type
-            // Trap time
+            // User_Id
+            // Trap time - ReportTime
+            // ExpireTime
 
-            TrapLocation trapLoc = new TrapLocation();
             
-            
-            // fill in other fields
-            //trapLoc.Username = username;
-            trapLoc.TrapLatitude = Convert.ToSingle(lat);
-            trapLoc.TrapLongitude = Convert.ToSingle(lng);
-            trapLoc.TrapStreet = street;
-            trapLoc.TrapCity = city;
-            trapLoc.TrapState = state;
-            trapLoc.TrapType = type; // should be one character long string
+        
             // immediately following storing type, record server time and store in object
             trapLoc.recordReportTime();
+
+            // store User_Id from session in location object
             if (trapLoc.storeUser())
             {
                 // userId exists. safe  to store TrapLocation object in session
                 HttpContext.Current.Session.Add("ReportLocation", trapLoc); // needed syntax for the static method (outside webform)
 
             }
-            
         }
     }
 }

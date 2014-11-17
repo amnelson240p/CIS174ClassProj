@@ -21,7 +21,9 @@ namespace SpeedMap
                 // pull the user from cookie
                 if (Request.Cookies["userInfo"] != null)
                 {
-                    lblUsername.Text = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                    string username = Server.HtmlEncode(Request.Cookies["userInfo"]["userName"]);
+                    lblUsername.Text = username;
+                    hConfirm.InnerHtml = "Thank you " + username + ", for the report";
                 }
             }
             else
@@ -32,13 +34,13 @@ namespace SpeedMap
 
             // update labels with object properties
             //lblUsername.Text = storedLoc.Username.ToString();
-            lblLongitude.Text = storedLoc.TrapLongitude.ToString();
-            lblLatitude.Text = storedLoc.TrapLatitude.ToString();
+            lblLongitude.Text = storedLoc.Longitude.ToString();
+            lblLatitude.Text = storedLoc.Latitude.ToString();
             lblReportTime.Text = storedLoc.ReportTime.ToString();
             lblExpireTime.Text = storedLoc.ExpireTime.ToString();
-            lblStreet.Text = storedLoc.TrapStreet.ToString();
-            lblCity.Text = storedLoc.TrapCity.ToString();
-            lblState.Text = storedLoc.TrapState.ToString();
+            lblStreet.Text = storedLoc.Street.ToString();
+            lblCity.Text = storedLoc.City.ToString();
+            lblState.Text = storedLoc.State.ToString();
             lblTrapType.Text = storedLoc.TrapType.ToString();
 
             

@@ -27,6 +27,7 @@
     </footer>
 
     <script src="Scripts/jquery-2.1.1.min.js"></script>
+    <script src="Scripts/reportcom.js"></script>
     <script src="Scripts/revgeocode.js"></script>
     <script src="Scripts/EntryScript.js"></script>
     <script src="Scripts/geo.js"></script>

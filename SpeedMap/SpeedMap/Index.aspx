@@ -12,6 +12,7 @@
         </figure>
 
         <a href="#Registration" id="registration">Register Here!</a>
+
     </section>
     
 </asp:Content>

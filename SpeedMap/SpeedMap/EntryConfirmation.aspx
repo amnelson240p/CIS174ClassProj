@@ -5,7 +5,7 @@
     <link href="css/entry.css" rel="stylesheet" />
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
-    <h1>Thank you for the report</h1>
+    <h1 id="hConfirm" runat="server"></h1>
     <h2>The location has been recorded.</h2>
     <div class="testGroup">
         <label for="lblUsername">Username</label>

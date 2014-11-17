@@ -35,8 +35,8 @@ function lookup_location() {
 }
 
 function success_callback(position) {
-    var latitude = position.coords.latitude.toFixed(4);
-    var longitude = position.coords.longitude.toFixed(4);
+    var latitude = position.coords.latitude;
+    var longitude = position.coords.longitude;
 
     updateMap(latitude, longitude);
 }

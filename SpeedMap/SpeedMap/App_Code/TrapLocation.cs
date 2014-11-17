@@ -5,6 +5,7 @@ using System.Web;
 
 namespace SpeedMap.App_Code
 {
+
     public class TrapLocation
     {
         private DateTime startTime;
@@ -14,73 +15,75 @@ namespace SpeedMap.App_Code
         private string trapCity;
         private string trapStreet;
         private string trapState;
-        //private string username; // username who reported trap location
         private int userId; // from database
         private double trapLatitude;
         private double trapLongitude;
 
+
+       
         public TrapLocation()
         {
-            // start measuring time from Jan 1, 2014
-            startTime = new DateTime(2014, 1, 1);
-            trapType = "M"; // default type
+        }
+        public TrapLocation(string json)
+        {
+
         }
 
         // properties
-        public long ReportTime {
-            get { return reportTime; }
-            set { reportTime = value; }
-        }
-        public double TrapLatitude
+        
+        public double Latitude
         {
             get { return trapLatitude; }
-            set { trapLatitude = Convert.ToSingle(value); }
+            set { trapLatitude = value; }
         }
-        public double TrapLongitude
+        public double Longitude
         {
             get { return trapLongitude; }
-            set { trapLongitude = Convert.ToSingle(value); }
+            set { trapLongitude = value; }
         }
-
-        public string TrapType
-        {
-            get { return trapType; }
-            set { trapType = value.ToUpper(); }
-        }
-        public string TrapCity
-        {
-            get { return trapCity; }
-            set { trapCity = value; }
-        }
-        public string TrapStreet
+        public string Street
         {
             get { return trapStreet; }
             set { trapStreet = value; }
         }
-        public string TrapState
+        public string City
+        {
+            get { return trapCity; }
+            set { trapCity = value; }
+        }
+        
+        public string State
         {
             get { return trapState; }
             set { trapState = value; }
         }
-        public int UserId
+        public string TrapType
+        {
+            get { return trapType; }
+            set { trapType = value; }
+        }
+        public int User_Id
         {
             get { return userId; }
             set { userId = value; }
         }
-        //public string Username
-        //{
-        //    get { return username; }
-        //    set { username = value; }
-        //}
+        public long ReportTime
+        {
+            get { return reportTime; }
+            set { reportTime = value; }
+        }
         public long ExpireTime
         {
             get { return expireTime; }
-            set { recordReportTime(); }
+            set { expireTime = value; }
         }
 
         // special method to handle storing the report time
         public void recordReportTime()
         {
+            // start measuring time from Jan 1, 2014
+            startTime = new DateTime(2014, 1, 1);
+
             // get server time
             DateTime currentDate = DateTime.Now;
 

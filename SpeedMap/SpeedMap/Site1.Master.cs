@@ -8,6 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using SpeedMap.App_Code;
 
 namespace SpeedMap
 {
@@ -156,14 +157,29 @@ namespace SpeedMap
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            bool isValid = true; // hard code test for now need to fix <<<<<<<<<
+            bool isValid; // hard code test for now need to fix <<<<<<<<<
             // validation? ****************** FIX *******************
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
-            int userId; // userId from database
+            // clean up user input
+            user = user.Trim();
+            pass = pass.Trim();
+            int userId = -1; // default false flag
+            
 
-            // logic to verify correct username + password
-            // needs database access ******** NEED CODE HERE ***************
+            // logic to verify correct username + password                   
+            userId = SpeedMapUserDB.verifyLogin(user, pass); // accesses database
+            if (userId == -1)
+            {
+                // login failed
+                isValid = false;
+            }
+            else
+            {
+                // success. userId is User_Id from database
+                isValid = true;
+            }
+
             // does username and password match database?
             if (!isValid)
             {
@@ -177,8 +193,8 @@ namespace SpeedMap
             }
             else // success
             {
-                userId = 4; // hard coded test >>>>> REMOVE THIS LINE WHEN DATABASE IS WORKING <<<<<
-                // verify success
+                //userId = 4; // hard coded test >>>>> REMOVE THIS LINE WHEN DATABASE IS WORKING <<<<<
+                
 
 
 
