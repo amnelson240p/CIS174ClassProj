@@ -41,17 +41,14 @@ function renderReverse(response) {
     trapLoc.Street = location.street;
     trapLoc.City = location.adminArea5;
     trapLoc.State = location.adminArea3;
-    trapLoc.User_Id = -1; // junk value
-    trapLoc.ReportTime = 0; // junk value
-    trapLoc.ExpireTime = 0; // junk value
-    var request = {Latitude:trapLoc.trapLat, Longitude:trapLoc.Longitude, Street:location.street,
-     City:location.adminArea5, State:location.adminArea3, TrapType:trapLoc.trapType,
-     User_Id:trapLoc.User_Id, ReportTime:trapLoc.ReportTime, ExpireTime:trapLoc.expiretime };
-    var strRequest = JSON.stringify(trapLoc);
-    //alert(strRequest);
+
+
+    // instead of building the string on the call we'll build it (the full JSON object) before
+    // with a data transfer object
+    var DTO = { 'trapLoc': trapLoc }; // now we'll peform JSON.stringify(DTO) at AJAX call
 
     // send report data to server through calling storeData code-behind method and passing client-side values
-    sendMyReport(strRequest); // reportcom.js
+    sendMyReport(DTO); // reportcom.js
 
     
 }

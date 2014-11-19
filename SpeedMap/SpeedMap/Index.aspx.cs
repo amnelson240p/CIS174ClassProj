@@ -22,5 +22,10 @@ namespace SpeedMap
             }
            
         }
+
+        protected void btnRegistration_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registration.aspx");
+        }
     }
 }

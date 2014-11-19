@@ -22,6 +22,9 @@ function success_callback(position) {
     //var testStr = "lat: " + myLatitude + ", lng: " + myLongitude;
     //alert(testStr);
 
+    myLngSet(myLongitude);
+    myLatSet(myLatitude);
+
     // if we are on feed page calculate distances
 
     
@@ -40,9 +43,9 @@ function error_callback(err) {
 function get_distance(lat, lng) {
     var Rm = 3961;
     var lat1 = deg2rad(lat);
-    var lat2 = deg2rad(myLatitude);
+    var lat2 = deg2rad(myLat);
     var lon1 = deg2rad(lng);
-    var lon2 = deg2rad(myLongitude);
+    var lon2 = deg2rad(myLng);
 
     // find the differences between the coordinates
     var dlat = lat2 - lat1;

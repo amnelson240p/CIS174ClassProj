@@ -14,7 +14,7 @@ namespace SpeedMap.App_Code
         private string city;
         private string trapType;
         private int reportTime;
-
+        private double distance;
 
         public DisplayReport()
         {
@@ -54,6 +54,12 @@ namespace SpeedMap.App_Code
         {
             get { return reportTime; }
             set { reportTime = value; }
+        }
+
+        public double Distance
+        {
+            get { return distance; }
+            set { distance = value; }
         }
     }
 }

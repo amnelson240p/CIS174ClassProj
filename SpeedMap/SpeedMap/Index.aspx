@@ -11,7 +11,7 @@
             <img src="images/TrapMonitorpbg.gif" alt="Trap Monitor Logo" style="height: 412px; width: 664px" />
         </figure>
 
-        <a href="#Registration" id="registration">Register Here!</a>
+        <asp:Button ID="btnRegistration" runat="server" Text="Register Here!" OnClick="btnRegistration_Click" />
 
     </section>
     

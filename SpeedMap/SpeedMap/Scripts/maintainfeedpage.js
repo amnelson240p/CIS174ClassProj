@@ -1,10 +1,3 @@
-var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
-var lblStr = ["_rtime", "_lat", "_lng"]; 
-
-function setCount(c) {
-	count = c;
-}
-
 function createUL() {
 	var out = document.getElementById("jsOutput");
             // each report record is built with this format
@@ -82,7 +75,7 @@ function createUL() {
 
 	    function updateTimes() {
 	        // update time elements
-            // count is the number of records an element needs to be updated
+            // recordCount is the number of records an element needs to be updated
             var d = new Date();
 	        var startDate = new Date("January 1, 2014"); // January 1, 2014
 	        var nowTime = Math.abs(d - startDate);
@@ -93,7 +86,7 @@ function createUL() {
 	        // need to put in loop time1, time2, etc.
 	        var feedStr;
 	        var timeStr;
-	        for (i = 0; i < count; i++) {
+	        for (i = 0; i < recordCount; i++) {
 	        	feedStr = "feed" + i + "_rtime";
 	        	timeStr = classStr[3] + i;
 	        	var reportTime = document.getElementById(feedStr).innerHTML;
@@ -146,7 +139,7 @@ function createUL() {
 	    	var lat;
 	    	var dist;
 
-	    	for (i = 0; i < count; i++) {
+	    	for (i = 0; i < recordCount; i++) {
 	    		var rd = document.getElementById(classStr[1] + i);
 	    		
 	    		lat = document.getElementById("feed" + i + lblStr[1]).innerHTML;

@@ -1,7 +1,4 @@
-﻿
-var marker;
-var map;
-var toggleState = 'M';
+﻿var toggleState = 'M';
 //sessionStorage.setItem("toggleState", toggleState);
 
 document.getElementById("formPlaceHolder_hfTrapType").value = toggleState; // store default to start
@@ -38,7 +35,7 @@ function success_callback(position) {
     var latitude = position.coords.latitude;
     var longitude = position.coords.longitude;
 
-    updateMap(latitude, longitude);
+    loadMap(latitude, longitude);
 }
 
 function error_callback(err) {
@@ -51,17 +48,19 @@ function error_callback(err) {
         alert("User location unavailable");
     }
 }
-function updateMap(lat, lng) {
-    var image = 'images/SpeedTrapIcon.png';
-    var mapOptions = { zoom: 15, center: new google.maps.LatLng(lat, lng) };
-    map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-    marker = new google.maps.Marker({ map: map, position: mapOptions.center, draggable: true, title: "Spotted Trap", icon: image });
+function loadMap(lat, lng) {
+    //var image = 'images/SpeedTrapIcon.png';
+    //marker = new google.maps.Marker({ map: map, position: mapOptions.center, draggable: true, title: "Spotted Trap", icon: image });
+    var mapOptions = createMap(lat, lng, 15);
+    // parameters src, title, map options (only need center really)
+    marker = createDragMarker(iconimage.mobile, "Spotted trap", mapOptions);
 
 }
 function store_marker() {
-    // grab position from marker
-    var mlat = marker.getPosition().lat();
-    var mlong = marker.getPosition().lng();
+    // grab position from marker - global marker
+    var markerPos = getMarkerPostion(marker);
+    var mlat = markerPos.lat;
+    var mlong = markerPos.lng;
 
     // store values in fields
     document.getElementById("formPlaceHolder_hfLongitude").value = mlong;

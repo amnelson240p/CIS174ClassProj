@@ -95,6 +95,8 @@ namespace SpeedMap.App_Code
             return userId;
         }
 
+        
+
         private static string GetConnectionString()
         {
             return ConfigurationManager.ConnectionStrings

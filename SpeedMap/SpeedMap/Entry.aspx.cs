@@ -69,7 +69,6 @@ namespace SpeedMap
         [WebMethod]
         public static void storeData(TrapLocation trapLoc)
         {
-            //public static void storeData(string Latitude, string Longitude, string Street, string City, string State, string TrapType, string User_Id, string ReportTime, string ExpireTime)
             // Traplocation fields
             // Latitude
             // Longitude
@@ -91,6 +90,8 @@ namespace SpeedMap
             {
                 // userId exists. safe  to store TrapLocation object in session
                 HttpContext.Current.Session.Add("ReportLocation", trapLoc); // needed syntax for the static method (outside webform)
+
+                // safe to attempt to store in database
 
             }
         }

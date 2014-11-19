@@ -140,7 +140,7 @@ span#lblUser {
     color: white;
 }
 
-#registration {
+#btnRegistration {
     text-decoration: none;
     font-family: 'Noto serif', serif;
     font-size: 16px;
@@ -158,8 +158,8 @@ span#lblUser {
     margin-right: auto;
 }
 
-    #registration:hover,
-    #registration:active {
+    #btnRegistration:hover,
+    #btnRegistration:active {
         color: #C562E6;
         background: linear-gradient( #09F, #09F);
     }

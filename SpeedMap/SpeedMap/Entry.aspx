@@ -25,13 +25,16 @@
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btnReport" />
         </div>
     </footer>
-
+    <script src="Scripts/mapstuff.js"></script>
     <script src="Scripts/jquery-2.1.1.min.js"></script>
     <script src="Scripts/reportcom.js"></script>
     <script src="Scripts/revgeocode.js"></script>
     <script src="Scripts/EntryScript.js"></script>
     <script src="Scripts/geo.js"></script>
     <script src="//maps.googleapis.com/maps/api/js?"></script>
+    <script>
+        var btnSubmitID = "<%=btnSubmit.ClientID%>";
+    </script>
     
 </asp:Content>
 

@@ -4,14 +4,11 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Web.Script.Serialization;
-using System.Web.Services;
 using SpeedMap.App_Code;
-
 
 namespace SpeedMap
 {
-    public partial class WebForm1 : System.Web.UI.Page
+    public partial class Registration : System.Web.UI.Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -34,17 +31,12 @@ namespace SpeedMap
                 Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
                 Response.Redirect("Index.aspx");
             }
-
         }
 
-        [WebMethod]
-        public static string GetLocalData(double lat, double lng)
+        protected void btnValidation_Click(object sender, EventArgs e)
         {
-            List<DisplayReport> reportList = ReportDB.GetLocalFeedReports(lat, lng);
-            var jsonSerialiser = new JavaScriptSerializer();
-            var json = jsonSerialiser.Serialize(reportList);
-
-            return json;
+            //bool validate = SpeedMapUserDB.verifyUsername("Bmuir44");
+            //lblUsernameValidation.Text = validate.ToString();
         }
     }
 }
