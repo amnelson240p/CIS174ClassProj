@@ -1,6 +1,7 @@
 var iconimage = {};
 iconimage.fixed = "images/FixedTrapIcon.png";
 iconimage.mobile = "images/SpeedTrapIcon.png";
+var centermarker = "images/sportscar.png";
 
 function createMap(lat, lng, z) {
 	var mapOptions = { zoom: z, center: new google.maps.LatLng(lat, lng) };

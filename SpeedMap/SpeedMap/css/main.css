@@ -1,4 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Droid+Sans|Noto+Serif);
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,700);
 @charset "utf-8";
 /* CSS Document */
 header, section, footer, aside, nav, main, article, figure {
@@ -9,13 +10,23 @@ body {
     /*font-family:Tahoma, Geneva, sans-serif;*/
     font-family: 'Droid Sans', sans-serif;
     font-size: 14px;
-    min-width: 385px;
+    min-width: 500px;
     text-align: center;
     width: 100%;
     margin: 0;
 }
 
+header {
+    position: fixed;
+    top: 0px;
+    width:100%;
+    background-color: white;
+    z-index: 2;
+    
+}
+
 section {
+    padding-top: 7%;
     background: #E2E2E2;
     width: 100%;
     overflow: hidden;
@@ -105,6 +116,10 @@ figure {
             background: linear-gradient( #6C6, #004800);
         }
 
+.loginError {
+    color: red;
+}
+
 label.welcome {
     margin-right: 5px;
     color: white;
@@ -118,19 +133,33 @@ label.welcome {
 .error {
     color: red;
     background: #E2E2E2;
-    overflow:hidden;
+    overflow: hidden;
 }
 
     .error ul {
-        width:15%;
-        margin-left:auto;
+        width: 15%;
+        margin-left: auto;
         margin-right: auto;
     }
+
     .error li {
         text-align: left;
     }
 
-
+.notification {
+    float: left;
+    width: 40px;
+    border-style:outset;
+    border-width:1px;
+    border-color: #E2E3DF;
+    background-color: rgba(90,90,90,.4);
+    border-radius: 5px;
+    height: 30px;
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    margin-left: 10%;
+}
 
 #ValidationSummary1 {
     /*margin-top: 1em;*/
@@ -140,26 +169,41 @@ span#lblUser {
     color: white;
 }
 
-#btnRegistration {
+.btnRegistration {
     text-decoration: none;
-    font-family: 'Noto serif', serif;
     font-size: 16px;
-    /*background: #09F;*/
-    background: linear-gradient( #09F, #B3E0FF);
+    background: linear-gradient( #474747, #1e1e1e);
     border-radius: 10px;
-    color: white;
-    padding: 10px 15px 10px 15px;
+    color: #999;
+    padding: 7px 15px 7px 15px;
     display: block;
     width: 8em;
-    box-shadow: 0 0 15px 1px #666;
+    /*box-shadow: 0 0 15px 1px #666;*/
     margin-bottom: 20px;
     /* text-align: center; */
     margin-left: auto;
     margin-right: auto;
 }
 
-    #btnRegistration:hover,
-    #btnRegistration:active {
-        color: #C562E6;
-        background: linear-gradient( #09F, #09F);
+    .btnRegistration:hover,
+    .btnRegistration:active {
+        background: linear-gradient( #39F, #1e1e1e);
+        color: white;
     }
+
+.btnRefresh {
+    float: left;
+    margin-left: 30%;
+}
+
+
+#trapNotifications {
+    display: block;
+    position: inherit;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #F52703;
+    font-family: 'Roboto', sans-serif;
+	font-weight: bold;
+    font-size: 20px;
+}

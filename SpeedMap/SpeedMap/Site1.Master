@@ -14,6 +14,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <header>
         <nav>
              <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click">Home</asp:LinkButton>
             <asp:LinkButton ID="lbtnEntry" runat="server" OnClick="lbtnEntry_Click">Entry</asp:LinkButton>
@@ -34,9 +35,12 @@
             <asp:Label ID="lblUser" runat="server" Text="user" ></asp:Label>
             <asp:Button ID="btnLogOut" runat="server" Text="Logout" OnClick="btnLogOut_Click" />
         </div>
+        <div class="login loginError" id="loginError" runat="server">
+            <label>Login failed.</label>
+        </div>
         
         <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" CssClass="error" />
-        
+        </header>
         <asp:ContentPlaceHolder ID="formPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
 

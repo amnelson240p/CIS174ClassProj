@@ -2,8 +2,10 @@
 var marker;
 var myLng;
 var myLat;
+var nowTime;
 var recordCount = null;
 var rData;
+var NumNewReports;
 var classStr = ["feedLoc", "feedDistance", "feedType", "feedDuration"];
 var lblStr = ["_rtime", "_lat", "_lng"];
 
@@ -17,4 +19,8 @@ function myLatSet(lat) {
 
 function setCount(c) {
     recordCount = c;
+}
+
+function setNumNewReports(num) {
+    NumNewReports = num;
 }

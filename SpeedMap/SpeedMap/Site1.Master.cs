@@ -1,6 +1,14 @@
 ﻿// Site1.Master.cs
 // Updated 11/2/2014 for basic login navigation - Aaron Nelson
+// Updated 11/20/2014 cleanup and comments
 // Structure - Aaron Nelson
+// Master page contains navigation and login elements
+// login status is stored in session
+// successful login stores username in a cookie,
+// hides login bar and displays welcome bar
+// navigation status - 
+// (Home(Index), Entry, Map, or Feed) stored in session
+// navigation status used to change css stylizations of nav elements
 
 using System;
 using System.Collections.Generic;
@@ -21,9 +29,11 @@ namespace SpeedMap
         protected void Page_Load(object sender, EventArgs e)
         {
             removeActiveStatus(); // clear navigation attributes for css
+            
 
             if (!IsPostBack)
             {
+                loginError.Visible = false;
                 // attempt to pull username from cookies
                 if (Request.Cookies["userInfo"] != null)
                 {
@@ -74,13 +84,15 @@ namespace SpeedMap
             // update visible elements based on status
             if (!loginstatus)
             {
+                // make sure welcome bar is hidden
                 loggedin.Visible = false;
             }
             else
             {
                 // we are logged in
+                loginError.Visible = false;
                 loggedout.Visible = false;
-                loggedin.Visible = true;
+                loggedin.Visible = true; // display welcome bar
                 // pull username from cookie if available
                 if (Request.Cookies["userInfo"] != null)
                 {
@@ -157,8 +169,8 @@ namespace SpeedMap
 
         protected void btnSignIn_Click(object sender, EventArgs e)
         {
-            bool isValid; // hard code test for now need to fix <<<<<<<<<
-            // validation? ****************** FIX *******************
+            bool isValid;
+            
             string user = txtUsername.Text;
             string pass = txtPassword.Text;
             // clean up user input
@@ -188,16 +200,12 @@ namespace SpeedMap
                 loginstatus = false;
                 Session["loginStatus"] = loginstatus;
                 // code to message incorrect password combo (or page) ******* Fix ******
-
+                loginError.Visible = true;
 
             }
             else // success
             {
-                //userId = 4; // hard coded test >>>>> REMOVE THIS LINE WHEN DATABASE IS WORKING <<<<<
                 
-
-
-
                 Response.Cookies["userInfo"]["userName"] = user;
 
                 if (chkRemember.Checked)
@@ -218,6 +226,7 @@ namespace SpeedMap
                 txtUsername.Text = "";
                 txtPassword.Text = "";
 
+                loginError.Visible = false;
                 loggedout.Visible = false;
                 loggedin.Visible = true;
                 loginstatus = true; // change status flag

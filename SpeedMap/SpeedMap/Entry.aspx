@@ -5,7 +5,8 @@
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
     <section>
-        <h1>Location</h1>
+        <p>Toggle Mobile/Fixed. Drag marker to adjust. Press report to submit.</p>
+        <asp:Label ID="lblError" runat="server" Text=""></asp:Label>
         
         <asp:HiddenField ID="hfLongitude" runat="server" />
         <asp:HiddenField ID="hfLatitude" runat="server" />
@@ -20,7 +21,7 @@
     </section>
     <footer>
         <img src="images/toggle_mobile.png" alt="toggle button" id="imgToggle" onclick="toggle()" class="btnToggle" />
-        <button type="button" onclick="store_marker();return false;" class="btnReport">Report Trap</button>
+        <button type="button" onclick="store_marker();return false;" class="btnReport btnRegistration">Report Trap</button>
         <div hidden="hidden">
             <asp:Button ID="btnSubmit" runat="server" Text="Submit" OnClick="btnSubmit_Click" CssClass="btnReport" />
         </div>

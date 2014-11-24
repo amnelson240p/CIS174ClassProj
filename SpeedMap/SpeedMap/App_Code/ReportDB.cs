@@ -13,6 +13,54 @@ namespace SpeedMap.App_Code
     public static class ReportDB
     {
         private static List<DisplayReport> locationList;
+        public const int feedRangeConst = 35; // mile range
+        public const int mapRangeConst = 100; // mile range
+
+        public static void insertReport(TrapLocation loc)
+        {
+            string ins = "INSERT INTO TrapReports" +
+                " (User_Id, Latitude, Longitude, Street, City, State, TrapType, ReportTime, ExpireTime )" +
+                " VALUES (@User_Id, @Latitude, @Longitude, @Street, @City, @State, @TrapType, @ReportTime, @ExpireTime)";
+
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand(ins, con))
+                {
+                    try
+                    {
+                        cmd.Parameters.AddWithValue("User_Id", loc.User_Id);
+                        cmd.Parameters.AddWithValue("Longitude", loc.Longitude);
+                        cmd.Parameters.AddWithValue("Latitude", loc.Latitude);
+                        cmd.Parameters.AddWithValue("Street", loc.Street);
+                        cmd.Parameters.AddWithValue("City", loc.City);
+                        cmd.Parameters.AddWithValue("State", loc.State);
+                        cmd.Parameters.AddWithValue("TrapType", loc.TrapType);
+                        cmd.Parameters.AddWithValue("ReportTime", loc.ReportTime);
+                        cmd.Parameters.AddWithValue("ExpireTime", loc.ExpireTime);
+                        con.Open();
+                        cmd.ExecuteNonQuery();
+                    }
+                    catch (Exception ex)
+                    {
+                        if (ex != null)
+                        {
+                            string msg = "A database error has occurred.<br /><br />" + ex.Message;
+                            if (ex.InnerException != null)
+                            {
+                                msg += "<br />Message: " + ex.InnerException.Message;
+                            }
+                            throw new Exception(msg);
+                        }
+                       
+                        
+                    }
+                    finally
+                    {
+                        con.Close(); 
+                    }
+                }
+            }
+        }
 
         public static List<DisplayReport> GetReports()
         {
@@ -49,17 +97,17 @@ namespace SpeedMap.App_Code
 
         public static List<DisplayReport> GetLocalFeedReports(double lat, double lng)
         {
-            decimal range = 35; // feed range will be shorter than map 
+            
 
-            loadReportList(lat, lng, range);
+            loadReportList(lat, lng, feedRangeConst);
             return locationList;
         }
 
         public static List<DisplayReport> GetLocalMarkerLocations(double lat, double lng)
         {
-            decimal range = 150; // Marker range larger for Map page 
+            
 
-            loadReportList(lat, lng, range);
+            loadReportList(lat, lng, mapRangeConst);
             return locationList;
         }
 
@@ -100,6 +148,38 @@ namespace SpeedMap.App_Code
                         locationList.Add(location);
                     }
                     con.Close();
+                }
+            }
+        }
+
+        public static int GetNumNewReports(double lat, double lng, decimal range, int newestTime)
+        {
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("spGetNumNewLocal", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@userLat", SqlDbType.Decimal, 9, "Latitude"));
+                    cmd.Parameters.Add(new SqlParameter("@userLng", SqlDbType.Decimal, 9, "Longitude"));
+                    cmd.Parameters.Add(new SqlParameter("@userNewestTime", SqlDbType.Decimal, 10, "ReportTime"));
+                    cmd.Parameters.Add(new SqlParameter("@maxRange", SqlDbType.Decimal, 9));
+                    SqlParameter returnValue = cmd.Parameters.Add("@RETURN_VALUE", SqlDbType.Decimal);
+                    returnValue.Direction = ParameterDirection.ReturnValue;
+
+                    // assign values to parameters
+                    cmd.Parameters["@userLat"].Value = lat;
+                    cmd.Parameters["@userLng"].Value = lng;
+                    cmd.Parameters["@userNewestTime"].Value = newestTime;
+                    cmd.Parameters["@maxRange"].Value = range;
+
+                    // call stored procedure
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    int numReports = Convert.ToInt32(returnValue.Value);
+                    
+                    con.Close();
+
+                    return numReports;
                 }
             }
         }

@@ -52,12 +52,25 @@ namespace SpeedMap
 
             if (Session["ReportLocation"] != null)
             {
-                // database entry here
-
-                // if everything is ok and stores in the database correctly
-
-                // ok we are good to go. redirect to confirmation
-                Response.Redirect("EntryConfirmation.aspx");
+                // database interaction
+                try
+                {
+                    TrapLocation loc = (TrapLocation)Session["ReportLocation"];
+                    ReportDB.insertReport(loc);
+                }
+                catch (Exception ex)
+                {
+                    if (ex != null)
+                    {
+                        lblError.Text = ex.Message;
+                    }
+                }
+                finally
+                {
+                    // if everything is ok and stores in the database correctly
+                    // ok we are good to go. redirect to confirmation
+                    Response.Redirect("EntryConfirmation.aspx");
+                }
             }
 
 
@@ -80,10 +93,11 @@ namespace SpeedMap
             // Trap time - ReportTime
             // ExpireTime
 
-            
-        
+
+
             // immediately following storing type, record server time and store in object
             trapLoc.recordReportTime();
+
 
             // store User_Id from session in location object
             if (trapLoc.storeUser())

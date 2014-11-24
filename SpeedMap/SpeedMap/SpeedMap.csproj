@@ -72,8 +72,12 @@
     <Content Include="images\FixedSm.png" />
     <Content Include="images\FixedTrapIcon.png" />
     <Content Include="images\MobileSm.png" />
+    <Content Include="images\Refresh.png" />
+    <Content Include="images\Refresh2.png" />
+    <Content Include="images\Refresh3.png" />
     <Content Include="images\speed-trap.jpg" />
     <Content Include="images\SpeedTrapIcon.png" />
+    <Content Include="images\sportscar.png" />
     <Content Include="images\toggle_fixed.png" />
     <Content Include="images\toggle_mobile.png" />
     <Content Include="images\TrapMonitorpbg.gif" />
@@ -90,6 +94,7 @@
     <Content Include="Scripts\geo-min.js" />
     <Content Include="Scripts\geo.js" />
     <Content Include="Scripts\globals.js" />
+    <Content Include="Scripts\jeffmap.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\locationdistance.js" />
