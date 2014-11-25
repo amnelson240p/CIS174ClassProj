@@ -95,6 +95,40 @@ function grabNewReportNumbers() {
     });
 }
 
+function ValidateUsername(username) {
+    var user = {};
+    user.username = username;
+    var requestStr = JSON.stringify(user);
+
+    $.ajax({
+        type: "POST",
+        url: "Registration.aspx/VerifyNewUser",
+        contentType: "application/json; charset=utf-8",
+        data: requestStr,
+        dataType: "json",
+        success: function (response) {
+            var doesExist = response.d;
+            console.log("doesExist: " + doesExist);
+            if (doesExist == 'true') {
+                // username already exists in the database error
+                document.getElementById("lblError").innerHTML = "Username exists. Please pick a new username.";
+            }
+            else {
+                // clear username error
+                document.getElementById("lblError").innerHTML = "";
+                // fire submit
+                document.getElementById("formPlaceHolder_btnRegistration").click();
+            }
+            
+        },
+
+        failure: function (response) {
+            alert(response.d);
+        }
+    });
+
+}
+
 function grabNewMarkerNumbers() {
     var loc = {};
     loc.lat = myLat;

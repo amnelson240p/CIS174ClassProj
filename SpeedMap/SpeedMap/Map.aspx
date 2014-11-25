@@ -23,6 +23,8 @@
     <script src="Scripts/reportcom.js"></script>
     <script src="Scripts/jeffmap.js"></script>
     <script>
+        var testLng;
+        var testLat;
         window.setTimeout(function () {
             // delayed to allow for first watchposition callback
             if (!myLat) {
@@ -44,7 +46,8 @@
                 // store locations for any postback
                 sessionStorage.myLat = myLat;
                 sessionStorage.myLng = myLng;
-
+                testLng = myLng;
+                testLat = myLat;
                 // load map
                 loadMapPageMap();
 
@@ -72,7 +75,16 @@
             }
         }, 10000);
 
-
+        window.setInterval(function () {
+            testLng -= 0.0005;
+        }, 1000);
+        
+        window.setInterval(function () {
+            
+            // center map to user
+            updateMapCenter(myLat, myLng);
+            //updateMapCenter(testLat, testLng);
+        }, 5000);
         
     </script>
 </asp:Content>

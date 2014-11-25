@@ -1,3 +1,5 @@
+var userMarker;
+
 function loadMapMarker(markers) {
 	// markers array from database
     var newestReportTime = 0;
@@ -42,6 +44,6 @@ function loadMapPageMap() {
 	var tmpOptions = createMap(myLat, myLng, 15);
 
 	//create and set a marker for the center
-	createNonDragMarker(centermarker, "You",  tmpOptions);
+	userMarker = createNonDragMarker(centermarker, "You",  tmpOptions);
 
 }

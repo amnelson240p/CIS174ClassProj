@@ -19,10 +19,9 @@ body {
 header {
     position: fixed;
     top: 0px;
-    width:100%;
+    width: 100%;
     background-color: white;
     z-index: 2;
-    
 }
 
 section {
@@ -149,8 +148,8 @@ label.welcome {
 .notification {
     float: left;
     width: 40px;
-    border-style:outset;
-    border-width:1px;
+    border-style: outset;
+    border-width: 1px;
     border-color: #E2E3DF;
     background-color: rgba(90,90,90,.4);
     border-radius: 5px;
@@ -159,6 +158,45 @@ label.welcome {
     top: 50%;
     transform: translateY(-50%);
     margin-left: 10%;
+}
+
+.form-group {
+    margin-top: 5px;
+    margin-bottom: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    border: 1px solid #000;
+    border-radius: 5px;
+    background: linear-gradient( #474747, #1e1e1e);
+    color: white;
+    overflow: hidden;
+}
+
+.entry-group {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 1.5em;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+
+    .entry-group > label {
+        float: left;
+        margin-left: 15%;
+        width: 150px;
+        text-align: right;
+    }
+
+    .entry-group input[type="password"], .entry-group input[type="text"] {
+        float: left;
+        margin-left: 5%;
+        width: 150px;
+    }
+
+.clear {
+    clear: both;
 }
 
 #ValidationSummary1 {
@@ -204,6 +242,6 @@ span#lblUser {
     transform: translateY(-50%);
     color: #F52703;
     font-family: 'Roboto', sans-serif;
-	font-weight: bold;
+    font-weight: bold;
     font-size: 20px;
 }

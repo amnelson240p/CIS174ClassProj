@@ -11,7 +11,9 @@
         </figure>
 
         <asp:Button ID="btnRegistration" runat="server" Text="Register Here!" OnClick="btnRegistration_Click" CssClass="btnRegistration" />
-
+        
     </section>
-    
+    <script>
+       
+    </script>
 </asp:Content>

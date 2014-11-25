@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using SpeedMap.App_Code;
+using System.Web.Script.Serialization;
+using System.Web.Services;
 
 namespace SpeedMap
 {
@@ -12,31 +14,44 @@ namespace SpeedMap
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // verify session and login status
-            if (Session["loginStatus"] != null)
-            {
-                // session but not logged in
-                if ((bool)Session["loginStatus"] == false)
-                {
-                    // Not logged in or no session(timeout?). Redirect to Index.aspx
-                    Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
-                    Response.Redirect("Index.aspx");
-                }
-
-            }
-            // no session stored
-            else
-            {
-                // Redirect to Index.aspx
-                Session["Navigation"] = 0;  // reset navigation flags for Index.aspx
-                Response.Redirect("Index.aspx");
-            }
+           
         }
 
-        protected void btnValidation_Click(object sender, EventArgs e)
+        [WebMethod]
+        public static string VerifyNewUser(string username)
         {
-            //bool validate = SpeedMapUserDB.verifyUsername("Bmuir44");
-            //lblUsernameValidation.Text = validate.ToString();
+            bool isUnique = false;
+            isUnique = SpeedMapUserDB.verifyUniqueUsername(username);
+
+            var jsonSerialiser = new JavaScriptSerializer();
+            var json = jsonSerialiser.Serialize(isUnique);
+            return json;
+        }
+
+        protected void btnRegistration_Click(object sender, EventArgs e)
+        {
+            // do stuff
+            SpeedMapUser newUser = new SpeedMapUser();
+            newUser.Username = txtUsername.Text;
+            newUser.Password = txtPassword.Text;
+
+            
+
+            try
+            {
+                SpeedMapUserDB.InsertUser(newUser);
+            }
+            catch (Exception ex)
+            {
+                lblDatabaseError.Text = ex.Message;
+            }
+            finally
+            {
+                Session["NewUser"] = newUser;
+                Response.Redirect("RegistrationConfirm.aspx");
+            }
+
+            
         }
     }
 }

@@ -47,20 +47,20 @@ namespace SpeedMap.App_Code
                     SqlDataReader dr = cmd.ExecuteReader();
                     if (dr.Read())
                     {
-                       
-                     userId = Convert.ToInt32(dr["User_Id"]);
-                        
+
+                        userId = Convert.ToInt32(dr["User_Id"]);
+
 
                     }
                     else
                     {
                         // failed to find match userId remains -1
-                       
+
                     }
                     con.Close(); // may not be needed
                 }
             }
-            
+
             return userId;
         }
 
@@ -75,9 +75,9 @@ namespace SpeedMap.App_Code
                 using (SqlCommand cmd = new SqlCommand("spLogin", con))
                 {
                     cmd.CommandType = CommandType.StoredProcedure;
-                    cmd.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar,15, "Username"));
+                    cmd.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 15, "Username"));
                     cmd.Parameters.Add(new SqlParameter("@password", SqlDbType.NVarChar, 30, "Password"));
-                    cmd.Parameters.Add(new SqlParameter("@tmpUserID", SqlDbType.Int,0, ParameterDirection.Output, false,10,0, "User_Id", DataRowVersion.Default, null));
+                    cmd.Parameters.Add(new SqlParameter("@tmpUserID", SqlDbType.Int, 0, ParameterDirection.Output, false, 10, 0, "User_Id", DataRowVersion.Default, null));
                     cmd.UpdatedRowSource = UpdateRowSource.OutputParameters;
 
                     // assign values to parameters
@@ -95,7 +95,28 @@ namespace SpeedMap.App_Code
             return userId;
         }
 
-        
+        public static bool verifyUniqueUsername(string username)
+        {
+            using (SqlConnection con = new SqlConnection(GetConnectionString()))
+            {
+                using (SqlCommand cmd = new SqlCommand("ufVerifyUsername", con))
+                {
+                    cmd.CommandType = CommandType.StoredProcedure;
+                    cmd.Parameters.Add(new SqlParameter("@username", SqlDbType.NVarChar, 15, "Username"));
+                    SqlParameter returnValue = cmd.Parameters.Add("@RETURN_VALUE", SqlDbType.Int);
+                    returnValue.Direction = ParameterDirection.ReturnValue;
+
+                    // assign value
+                    cmd.Parameters["@username"].Value = username;
+
+                    con.Open();
+                    cmd.ExecuteNonQuery();
+                    bool isUnique = Convert.ToBoolean(returnValue.Value);
+
+                    return isUnique;
+                }
+            }
+        }
 
         private static string GetConnectionString()
         {

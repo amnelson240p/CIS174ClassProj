@@ -16,17 +16,17 @@
     <form id="form1" runat="server">
         <header>
         <nav>
-             <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click">Home</asp:LinkButton>
-            <asp:LinkButton ID="lbtnEntry" runat="server" OnClick="lbtnEntry_Click">Entry</asp:LinkButton>
-            <asp:LinkButton ID="lbtnMap" runat="server" OnClick="lbtnMap_Click">Map</asp:LinkButton>
-            <asp:LinkButton ID="lbtnFeed" runat="server" OnClick="lbtnFeed_Click">Feed</asp:LinkButton>
+             <asp:LinkButton ID="lbtnHome" runat="server" OnClick="lbtnHome_Click" CausesValidation="False">Home</asp:LinkButton>
+            <asp:LinkButton ID="lbtnEntry" runat="server" OnClick="lbtnEntry_Click" CausesValidation="False">Entry</asp:LinkButton>
+            <asp:LinkButton ID="lbtnMap" runat="server" OnClick="lbtnMap_Click" CausesValidation="False">Map</asp:LinkButton>
+            <asp:LinkButton ID="lbtnFeed" runat="server" OnClick="lbtnFeed_Click" CausesValidation="False">Feed</asp:LinkButton>
             
         </nav>
         <div class="login" id="loggedout" runat="server">
             <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" ></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Username not entered" ControlToValidate="txtUsername" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>
+            <%--<asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Username not entered" ControlToValidate="txtUsername" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>--%>
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-            <asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="Password not entered" ControlToValidate="txtPassword" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>
+            <%--<asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="Password not entered" ControlToValidate="txtPassword" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>--%>
             <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" />
             <asp:CheckBox ID="chkRemember" runat="server" Checked="true" />Remember Me?
         </div>
@@ -39,7 +39,7 @@
             <label>Login failed.</label>
         </div>
         
-        <asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" CssClass="error" />
+        <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" CssClass="error" />--%>
         </header>
         <asp:ContentPlaceHolder ID="formPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>

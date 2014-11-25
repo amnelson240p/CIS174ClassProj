@@ -79,7 +79,17 @@ namespace SpeedMap
             }
             else
             {
-                loginstatus = false;
+                if (Session["Registration"] != null)
+                {
+                    // we are registering
+                    loginError.Visible = false;
+                    loggedout.Visible = false;
+                    loggedin.Visible = false;
+                }
+                else
+                {
+                    loginstatus = false;
+                }
             }
             // update visible elements based on status
             if (!loginstatus)

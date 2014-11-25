@@ -34,10 +34,8 @@ function getMarkerPostion(m) {
 }
 
 function updateMapCenter(lat, lng) {
-	var center = new google.maps.LatLng(lat, lng);
+    var center = new google.maps.LatLng(lat, lng);
+    userMarker.setPosition(center);
 	map.panTo(center);
-
-	// maybe code to move user marker if we have one goes here
-	// would need marker parameter in this function
-	// someMarker.setPosition(center);
+	console.log("map updated");
 }
