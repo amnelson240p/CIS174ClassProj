@@ -9,7 +9,7 @@
     </asp:ContentPlaceHolder>
     <link href="css/main.css" rel="stylesheet" />
     <script src="Scripts/globals.js"></script>
-    
+    <script src="Scripts/jquery-2.1.1.min.js"></script>
 
 </head>
 <body>
@@ -23,10 +23,8 @@
             
         </nav>
         <div class="login" id="loggedout" runat="server">
-            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" ></asp:TextBox>
-            <%--<asp:RequiredFieldValidator ID="rfvUsername" runat="server" ErrorMessage="Username not entered" ControlToValidate="txtUsername" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>--%>
+            <asp:TextBox ID="txtUsername" runat="server" placeholder="Username" onchange="CheckUsername()" ></asp:TextBox>
             <asp:TextBox ID="txtPassword" runat="server" placeholder="Password" TextMode="Password"></asp:TextBox>
-            <%--<asp:RequiredFieldValidator ID="rfvPassword" runat="server" ErrorMessage="Password not entered" ControlToValidate="txtPassword" Display="Dynamic" CssClass="validator">*</asp:RequiredFieldValidator>--%>
             <asp:Button ID="btnSignIn" runat="server" Text="Sign In" OnClick="btnSignIn_Click" />
             <asp:CheckBox ID="chkRemember" runat="server" Checked="true" />Remember Me?
         </div>
@@ -36,16 +34,16 @@
             <asp:Button ID="btnLogOut" runat="server" Text="Logout" OnClick="btnLogOut_Click" />
         </div>
         <div class="login loginError" id="loginError" runat="server">
-            <label>Login failed.</label>
+            <label>Login Failed</label>
         </div>
         
-        <%--<asp:ValidationSummary ID="ValidationSummary1" runat="server" HeaderText="Please correct the following" CssClass="error" />--%>
         </header>
+        
         <asp:ContentPlaceHolder ID="formPlaceHolder" runat="server">
         </asp:ContentPlaceHolder>
 
     </form>
-
-
+    <script src="Scripts/login.js"></script>
+    
 </body>
 </html>

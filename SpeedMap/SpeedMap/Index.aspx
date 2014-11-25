@@ -5,7 +5,7 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="formPlaceHolder" runat="server">
 
     <section>
-        <h1>Not Registered?</h1>
+        <label id="lblLoginInfo" class="error"></label>
         <figure>
             <img src="images/TrapMonitorpbg.gif" alt="Trap Monitor Logo" style="height: 412px; width: 664px" />
         </figure>

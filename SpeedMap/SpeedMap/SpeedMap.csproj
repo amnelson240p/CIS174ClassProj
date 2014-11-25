@@ -86,7 +86,6 @@
     <Content Include="packages.config" />
     <Content Include="Feed.aspx" />
     <Content Include="EntryConfirmation.aspx" />
-    <Content Include="GeoCodeTest.aspx" />
     <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Registration.aspx" />
     <Content Include="RegistrationConfirm.aspx" />
@@ -99,6 +98,7 @@
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\locationdistance.js" />
+    <Content Include="Scripts\login.js" />
     <Content Include="Scripts\maintainfeedpage.js" />
     <Content Include="Scripts\mapstuff.js" />
     <Content Include="Scripts\reportcom.js" />
@@ -164,13 +164,6 @@
     </Compile>
     <Compile Include="EntryConfirmation.aspx.designer.cs">
       <DependentUpon>EntryConfirmation.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="GeoCodeTest.aspx.cs">
-      <DependentUpon>GeoCodeTest.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="GeoCodeTest.aspx.designer.cs">
-      <DependentUpon>GeoCodeTest.aspx</DependentUpon>
     </Compile>
     <Compile Include="Site1.Master.designer.cs">
       <DependentUpon>Site1.Master</DependentUpon>
